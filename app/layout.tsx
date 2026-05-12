@@ -1,19 +1,6 @@
 import type { Metadata } from "next";
-import { Bevan, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
-
-const bevan = Bevan({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-bevan",
-});
-
-const bebasNeue = Bebas_Neue({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-bebas",
-});
 
 export const metadata: Metadata = {
   title: "Trenchman Academy — Built for the Athletes Who Fight in the Trenches",
@@ -32,7 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${bevan.variable} ${bebasNeue.variable}`}>
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/ijs2uww.css" />
+      </head>
       <body>
         <Nav />
         <main>{children}</main>

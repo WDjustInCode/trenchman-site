@@ -1,14 +1,25 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Bevan&family=Bebas+Neue&display=swap');
 
 @theme {
   --color-gold: #AF7618;
   --color-deep-black: #080706;
   --color-athletic-white: #E3E3E3;
+}
 
-  --font-family-rockwell: "Rockwell Extra Bold", Georgia, serif;
-  --font-family-bevan: Bevan, serif;
-  --font-family-bebas: "Bebas Neue", sans-serif;
-  --font-family-body: Calibri, Georgia, serif;
+@layer utilities {
+  .font-rockwell {
+    font-family: 'rockwell', Georgia, serif;
+  }
+  .font-novecento {
+    font-family: novecento-slab-condensed, serif;
+  }
+  .font-bevan {
+    font-family: 'Bevan', serif;
+  }
+  .font-bebas {
+    font-family: 'Bebas Neue', sans-serif;
+  }
 }
 
 body {

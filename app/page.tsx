@@ -55,25 +55,24 @@ export default function Home() {
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/trenchman-branding-1.png"
+            src="/linemen.jpg"
             alt="Trenchman Academy"
             fill
             className="object-cover opacity-25"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-deep-black/60 via-deep-black/80 to-deep-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-deep-black/30 via-deep-black/50 to-deep-black" />
         </div>
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold uppercase leading-none mb-6 text-athletic-white"
-            style={{ fontFamily: "'Rockwell Extra Bold', Georgia, serif" }}
+            className="font-rockwell text-5xl md:text-7xl lg:text-8xl font-bold uppercase leading-none mb-6 text-athletic-white"
           >
             Built for the Athletes Who Fight in the{" "}
             <span className="text-gold">Trenches.</span>
           </h1>
           <p
-            className="text-xl md:text-2xl tracking-widest text-athletic-white/80 mb-10 uppercase"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            className="font-bebas text-xl md:text-xl tracking-widest text-athletic-white/80 mb-10 uppercase"
+            
           >
             Grades 3–12 &bull; Position-Specific &bull; Real Coaching
           </p>
@@ -81,14 +80,14 @@ export default function Home() {
             <Link
               href="/academy#register"
               className="bg-gold text-deep-black font-bold text-lg px-8 py-4 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
-              style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+              
             >
               Register for a Camp
             </Link>
             <Link
               href="/store"
               className="border-2 border-athletic-white text-athletic-white font-bold text-lg px-8 py-4 rounded hover:bg-white/10 transition-colors uppercase tracking-wider"
-              style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+              
             >
               Shop Gear
             </Link>
@@ -107,7 +106,7 @@ export default function Home() {
             <div className="text-4xl mb-4">{v.icon}</div>
             <p
               className="text-gold text-2xl tracking-widest mb-2 uppercase"
-              style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+              
             >
               {v.label}
             </p>
@@ -121,7 +120,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <h2
             className="text-gold text-4xl tracking-widest text-center mb-12 uppercase"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            
           >
             From the Trenches
           </h2>
@@ -146,7 +145,7 @@ export default function Home() {
       <section className="max-w-6xl mx-auto px-6 py-16">
         <h2
           className="text-gold text-4xl tracking-widest mb-10 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           Upcoming Camps
         </h2>
@@ -166,7 +165,7 @@ export default function Home() {
                 <Link
                   href="/academy#register"
                   className="bg-gold text-deep-black font-bold px-5 py-2 rounded hover:bg-gold/80 transition-colors uppercase text-xs tracking-wider"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                  
                 >
                   Register
                 </Link>
@@ -178,7 +177,7 @@ export default function Home() {
           <Link
             href="/academy"
             className="text-gold hover:underline text-sm tracking-wider uppercase"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            
           >
             View Full Schedule →
           </Link>
@@ -190,7 +189,7 @@ export default function Home() {
         <div className="max-w-xl mx-auto text-center">
           <h2
             className="text-gold text-4xl tracking-widest mb-3 uppercase"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            
           >
             Join the Trench
           </h2>
@@ -211,7 +210,7 @@ export default function Home() {
             <button
               type="submit"
               className="bg-gold text-deep-black font-bold px-8 py-3 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
-              style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+              
             >
               Join
             </button>

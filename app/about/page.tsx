@@ -14,8 +14,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="py-24 px-6 text-center bg-gradient-to-b from-gold/10 to-transparent">
         <h1
-          className="text-5xl md:text-7xl text-athletic-white uppercase leading-none mb-4"
-          style={{ fontFamily: "'Rockwell Extra Bold', Georgia, serif" }}
+          className="font-rockwell text-5xl md:text-7xl text-athletic-white uppercase leading-none mb-4"
         >
           Built in the <span className="text-gold">Trenches.</span>
         </h1>
@@ -27,7 +26,7 @@ export default function AboutPage() {
           <div>
             <p
               className="text-gold text-3xl tracking-widest mb-6 uppercase"
-              style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+              
             >
               The Story
             </p>
@@ -59,13 +58,12 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto">
           <p
             className="text-gold text-xs tracking-widest mb-4 uppercase"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            
           >
             Our Mission
           </p>
           <blockquote
-            className="text-athletic-white text-3xl md:text-4xl uppercase leading-snug"
-            style={{ fontFamily: "'Rockwell Extra Bold', Georgia, serif" }}
+            className="font-rockwell text-athletic-white text-3xl md:text-4xl uppercase leading-snug"
           >
             &ldquo;To develop the most technically sound, physically dominant, and recruiting-ready linemen in the country — one camp at a time.&rdquo;
           </blockquote>
@@ -76,7 +74,7 @@ export default function AboutPage() {
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2
           className="text-gold text-4xl tracking-widest mb-8 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           Why Linemen?
         </h2>
@@ -100,14 +98,13 @@ export default function AboutPage() {
           ].map((item) => (
             <div key={item.label} className="border border-white/10 rounded-lg p-8 text-center">
               <p
-                className="text-gold text-5xl font-bold mb-2"
-                style={{ fontFamily: "'Rockwell Extra Bold', Georgia, serif" }}
+                className="font-rockwell text-gold text-5xl font-bold mb-2"
               >
                 {item.stat}
               </p>
               <p
                 className="text-gold text-lg tracking-widest mb-3 uppercase"
-                style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                
               >
                 {item.label}
               </p>
@@ -121,7 +118,7 @@ export default function AboutPage() {
       <section className="py-20 px-6 text-center">
         <h2
           className="text-gold text-5xl tracking-widest mb-6 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           Ready to Join the Trench?
         </h2>
@@ -129,14 +126,14 @@ export default function AboutPage() {
           <Link
             href="/academy#register"
             className="bg-gold text-deep-black font-bold text-lg px-10 py-4 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            
           >
             Register for a Camp
           </Link>
           <Link
             href="/store"
             className="border-2 border-athletic-white text-athletic-white font-bold text-lg px-10 py-4 rounded hover:bg-white/10 transition-colors uppercase tracking-wider"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            
           >
             Shop Gear
           </Link>

@@ -13,21 +13,20 @@ export default function RecruitingPage() {
       {/* Hero */}
       <section className="py-24 px-6 text-center bg-gradient-to-b from-gold/10 to-transparent">
         <h1
-          className="text-5xl md:text-7xl text-athletic-white uppercase leading-none mb-4"
-          style={{ fontFamily: "'Rockwell Extra Bold', Georgia, serif" }}
+          className="font-rockwell text-5xl md:text-7xl text-athletic-white uppercase leading-none mb-4"
         >
           Get Seen. <span className="text-gold">Get Recruited.</span>
         </h1>
         <p
           className="text-xl tracking-widest text-athletic-white/70 mb-10 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           We film it. We edit it. We distribute it.
         </p>
         <Link
           href="/academy#register"
           className="inline-block bg-gold text-deep-black font-bold text-lg px-10 py-4 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           Add Highlight Reel — $75
         </Link>
@@ -37,7 +36,7 @@ export default function RecruitingPage() {
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2
           className="text-gold text-4xl tracking-widest mb-10 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           What&apos;s Included
         </h2>
@@ -69,7 +68,7 @@ export default function RecruitingPage() {
               <div>
                 <p
                   className="text-gold text-xl tracking-widest mb-2 uppercase"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                  
                 >
                   {item.title}
                 </p>
@@ -85,7 +84,7 @@ export default function RecruitingPage() {
         <div className="max-w-5xl mx-auto">
           <h2
             className="text-gold text-4xl tracking-widest mb-12 text-center uppercase"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            
           >
             How It Works
           </h2>
@@ -102,7 +101,7 @@ export default function RecruitingPage() {
                 <span className="text-3xl">{s.icon}</span>
                 <p
                   className="text-gold text-2xl tracking-widest uppercase"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                  
                 >
                   {s.step}
                 </p>
@@ -117,7 +116,7 @@ export default function RecruitingPage() {
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2
           className="text-gold text-4xl tracking-widest mb-6 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           College Coach Network
         </h2>
@@ -143,7 +142,7 @@ export default function RecruitingPage() {
       <section className="bg-gold/10 border-y border-gold/30 py-16 px-6 text-center">
         <p
           className="text-gold text-4xl tracking-widest mb-4 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           Add Highlight Reel to Your Registration
         </p>
@@ -153,7 +152,7 @@ export default function RecruitingPage() {
         <Link
           href="/academy#register"
           className="inline-block bg-gold text-deep-black font-bold text-xl px-12 py-5 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           Register + Add Reel — $225
         </Link>
@@ -163,13 +162,13 @@ export default function RecruitingPage() {
       <section className="max-w-3xl mx-auto px-6 py-20 text-center">
         <p
           className="text-athletic-white/40 text-xs tracking-widest mb-6 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           For Coaches & Trainers
         </p>
         <h2
           className="text-athletic-white text-4xl tracking-widest mb-4 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           Bring Trenchman Academy to Your City
         </h2>
@@ -195,7 +194,7 @@ export default function RecruitingPage() {
           <button
             type="submit"
             className="bg-gold text-deep-black font-bold py-3 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider text-sm"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            
           >
             Submit Interest
           </button>

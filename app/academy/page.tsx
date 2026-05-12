@@ -69,22 +69,21 @@ export default function AcademyPage() {
       {/* Hero */}
       <section className="py-24 px-6 text-center bg-gradient-to-b from-gold/10 to-transparent">
         <h1
-          className="text-5xl md:text-7xl text-athletic-white uppercase leading-none mb-4"
-          style={{ fontFamily: "'Rockwell Extra Bold', Georgia, serif" }}
+          className="font-rockwell text-5xl md:text-7xl text-athletic-white uppercase leading-none mb-4"
         >
           Train Where the{" "}
           <span className="text-gold">Trenches</span> Are Won
         </h1>
         <p
           className="text-xl tracking-widest text-athletic-white/70 mb-10 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           Position-Specific Lineman Camps &bull; Grades 3–12
         </p>
         <a
           href="#register"
           className="inline-block bg-gold text-deep-black font-bold text-lg px-10 py-4 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           Register for a Camp
         </a>
@@ -94,7 +93,7 @@ export default function AcademyPage() {
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2
           className="text-gold text-4xl tracking-widest mb-12 text-center uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           How It Works
         </h2>
@@ -106,7 +105,7 @@ export default function AcademyPage() {
               </div>
               <p
                 className="text-gold text-2xl tracking-widest uppercase"
-                style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                
               >
                 {step}
               </p>
@@ -124,7 +123,7 @@ export default function AcademyPage() {
       <section id="register" className="max-w-6xl mx-auto px-6 py-16">
         <h2
           className="text-gold text-4xl tracking-widest mb-10 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           2025 Camp Schedule
         </h2>
@@ -136,7 +135,7 @@ export default function AcademyPage() {
                   <th
                     key={h}
                     className="pb-4 text-athletic-white/50 text-xs uppercase tracking-widest pr-6"
-                    style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                    
                   >
                     {h}
                   </th>
@@ -158,7 +157,7 @@ export default function AcademyPage() {
                     <a
                       href="#pricing"
                       className="bg-gold text-deep-black font-bold px-5 py-2 rounded hover:bg-gold/80 transition-colors uppercase text-xs tracking-wider inline-block"
-                      style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                      
                     >
                       Register
                     </a>
@@ -175,7 +174,7 @@ export default function AcademyPage() {
         <div className="max-w-5xl mx-auto">
           <h2
             className="text-gold text-4xl tracking-widest mb-10 text-center uppercase"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            
           >
             Pricing Tiers
           </h2>
@@ -211,20 +210,19 @@ export default function AcademyPage() {
                 {t.highlight && (
                   <span
                     className="text-xs text-deep-black bg-gold px-3 py-1 rounded-full w-fit uppercase tracking-widest"
-                    style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                    
                   >
                     Most Popular
                   </span>
                 )}
                 <p
                   className="text-gold text-2xl tracking-widest uppercase"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                  
                 >
                   {t.tier}
                 </p>
                 <p
-                  className="text-athletic-white text-4xl font-bold"
-                  style={{ fontFamily: "'Rockwell Extra Bold', Georgia, serif" }}
+                  className="font-rockwell text-athletic-white text-4xl font-bold"
                 >
                   {t.price}
                 </p>
@@ -242,7 +240,7 @@ export default function AcademyPage() {
                       ? "bg-gold text-deep-black hover:bg-gold/80"
                       : "border border-gold text-gold hover:bg-gold/10"
                   }`}
-                  style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                  
                 >
                   Select {t.tier}
                 </a>
@@ -256,7 +254,7 @@ export default function AcademyPage() {
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2
           className="text-gold text-4xl tracking-widest mb-10 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           Your Coaches
         </h2>
@@ -270,7 +268,7 @@ export default function AcademyPage() {
                 <p className="text-athletic-white font-bold text-lg">{c.name}</p>
                 <p
                   className="text-gold text-sm tracking-widest mb-2 uppercase"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                  
                 >
                   {c.role}
                 </p>
@@ -286,7 +284,7 @@ export default function AcademyPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-gold text-4xl tracking-widest mb-10 uppercase"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            
           >
             FAQ
           </h2>
@@ -305,14 +303,14 @@ export default function AcademyPage() {
       <section className="py-20 px-6 text-center">
         <h2
           className="text-gold text-5xl tracking-widest mb-6 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           Ready to Work?
         </h2>
         <a
           href="#register"
           className="inline-block bg-gold text-deep-black font-bold text-xl px-12 py-5 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           Secure Your Spot
         </a>

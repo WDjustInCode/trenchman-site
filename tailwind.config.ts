@@ -14,8 +14,8 @@ const config: Config = {
       },
       fontFamily: {
         rockwell: ["'Rockwell Extra Bold'", "Georgia", "serif"],
-        bevan: ["Bevan", "serif"],
-        bebas: ["'Bebas Neue'", "sans-serif"],
+        bevan: ["var(--font-bevan)", "serif"],
+        bebas: ["var(--font-bebas)", "sans-serif"],
         body: ["Calibri", "Georgia", "serif"],
       },
     },

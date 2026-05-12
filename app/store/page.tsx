@@ -22,14 +22,13 @@ export default function StorePage() {
       {/* Hero */}
       <section className="py-24 px-6 text-center bg-gradient-to-b from-gold/10 to-transparent">
         <h1
-          className="text-5xl md:text-7xl text-athletic-white uppercase leading-none mb-4"
-          style={{ fontFamily: "'Rockwell Extra Bold', Georgia, serif" }}
+          className="font-rockwell text-5xl md:text-7xl text-athletic-white uppercase leading-none mb-4"
         >
           Gear for the <span className="text-gold">Trenches</span>
         </h1>
         <p
           className="text-xl tracking-widest text-athletic-white/70 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           Represent the brand. Represent the work.
         </p>
@@ -41,7 +40,7 @@ export default function StorePage() {
           <div>
             <p
               className="text-gold text-2xl tracking-widest uppercase mb-1"
-              style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+              
             >
               Camp + Gear Bundle
             </p>
@@ -52,7 +51,7 @@ export default function StorePage() {
           <Link
             href="/academy#register"
             className="bg-gold text-deep-black font-bold px-8 py-3 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider whitespace-nowrap flex-shrink-0"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            
           >
             Bundle & Save
           </Link>
@@ -63,7 +62,7 @@ export default function StorePage() {
       <section className="max-w-6xl mx-auto px-6 py-8">
         <h2
           className="text-gold text-3xl tracking-widest mb-8 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           Apparel
         </h2>
@@ -80,7 +79,7 @@ export default function StorePage() {
                   {product.tag && (
                     <span
                       className="absolute top-3 left-3 bg-gold text-deep-black text-xs px-2 py-1 rounded uppercase tracking-widest"
-                      style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                      
                     >
                       {product.tag}
                     </span>
@@ -99,7 +98,7 @@ export default function StorePage() {
 
         <h2
           className="text-gold text-3xl tracking-widest mb-8 uppercase"
-          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          
         >
           Equipment
         </h2>
@@ -129,7 +128,7 @@ export default function StorePage() {
         <div className="border border-dashed border-gold/30 rounded-lg p-12 text-center">
           <p
             className="text-gold text-3xl tracking-widest mb-3 uppercase"
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            
           >
             Proprietary Training Tools — Coming Soon
           </p>
@@ -145,7 +144,7 @@ export default function StorePage() {
             <button
               type="submit"
               className="bg-gold text-deep-black font-bold px-6 py-3 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider text-sm"
-              style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+              
             >
               Notify Me
             </button>
