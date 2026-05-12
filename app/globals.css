@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #AF7618;
+  --color-deep-black: #080706;
+  --color-athletic-white: #E3E3E3;
+
+  --font-family-rockwell: "Rockwell Extra Bold", Georgia, serif;
+  --font-family-bevan: Bevan, serif;
+  --font-family-bebas: "Bebas Neue", sans-serif;
+  --font-family-body: Calibri, Georgia, serif;
+}
+
+body {
+  background-color: #080706;
+  color: #E3E3E3;
+  font-family: Calibri, Georgia, serif;
+}
