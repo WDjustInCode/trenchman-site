@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import HeroVideo from "@/components/HeroVideo";
 
 const verticals = [
   {
@@ -53,16 +53,7 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/linemen.jpg"
-            alt="Trenchman Academy"
-            fill
-            className="object-cover opacity-25"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-deep-black/30 via-deep-black/50 to-deep-black" />
-        </div>
+        <HeroVideo />
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <h1
             className="font-rockwell text-5xl md:text-7xl lg:text-8xl font-bold uppercase leading-none mb-6 text-athletic-white"
