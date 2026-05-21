@@ -36,7 +36,7 @@ export default function StorePage() {
 
       {/* Bundle Upsell */}
       <section className="max-w-6xl mx-auto px-6 mb-6">
-        <div className="bg-gold/10 border border-gold rounded-lg p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-gold/10 border-2 border-gold rounded-lg p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <p
               className="text-gold text-2xl tracking-widest uppercase mb-1"
@@ -50,7 +50,7 @@ export default function StorePage() {
           </div>
           <Link
             href="/academy#register"
-            className="bg-gold text-deep-black font-bold px-8 py-3 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider whitespace-nowrap flex-shrink-0"
+            className="font-bebas font-bold bg-gold text-deep-black px-8 py-3 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider whitespace-nowrap flex-shrink-0"
             
           >
             Bundle & Save
@@ -61,7 +61,7 @@ export default function StorePage() {
       {/* Product Grid */}
       <section className="max-w-6xl mx-auto px-6 py-8">
         <h2
-          className="text-gold text-3xl tracking-widest mb-8 uppercase"
+          className="font-novecento text-gold text-3xl tracking-widest mb-8 uppercase"
           
         >
           Apparel
@@ -72,7 +72,7 @@ export default function StorePage() {
             .map((product) => (
               <div
                 key={product.name}
-                className="border border-white/10 rounded-lg overflow-hidden hover:border-gold/40 transition-colors group"
+                className="border-2 border-gold/40 rounded-lg overflow-hidden hover:border-gold transition-colors group"
               >
                 <div className="bg-white/5 h-48 flex items-center justify-center relative">
                   <span className="text-5xl">👕</span>
@@ -88,7 +88,7 @@ export default function StorePage() {
                 <div className="p-4">
                   <p className="text-athletic-white text-sm font-bold mb-1">{product.name}</p>
                   <p className="text-gold font-bold">{product.price}</p>
-                  <button className="mt-3 w-full border border-gold text-gold text-xs py-2 rounded hover:bg-gold hover:text-deep-black transition-colors uppercase tracking-wider font-bold">
+                  <button className="font-bebas font-bold mt-3 w-full border-2 border-gold text-gold text-sm py-2 rounded hover:bg-gold hover:text-deep-black transition-colors uppercase tracking-wider">
                     Add to Cart
                   </button>
                 </div>
@@ -97,7 +97,7 @@ export default function StorePage() {
         </div>
 
         <h2
-          className="text-gold text-3xl tracking-widest mb-8 uppercase"
+          className="font-novecento text-gold text-3xl tracking-widest mb-8 uppercase"
           
         >
           Equipment
@@ -108,7 +108,7 @@ export default function StorePage() {
             .map((product) => (
               <div
                 key={product.name}
-                className="border border-white/10 rounded-lg overflow-hidden hover:border-gold/40 transition-colors"
+                className="border-2 border-gold/40 rounded-lg overflow-hidden hover:border-gold transition-colors"
               >
                 <div className="bg-white/5 h-48 flex items-center justify-center">
                   <span className="text-5xl">🏋️</span>
@@ -116,7 +116,7 @@ export default function StorePage() {
                 <div className="p-4">
                   <p className="text-athletic-white text-sm font-bold mb-1">{product.name}</p>
                   <p className="text-gold font-bold">{product.price}</p>
-                  <button className="mt-3 w-full border border-gold text-gold text-xs py-2 rounded hover:bg-gold hover:text-deep-black transition-colors uppercase tracking-wider font-bold">
+                  <button className="font-bebas font-bold mt-3 w-full border-2 border-gold text-gold text-sm py-2 rounded hover:bg-gold hover:text-deep-black transition-colors uppercase tracking-wider">
                     Add to Cart
                   </button>
                 </div>
@@ -125,7 +125,7 @@ export default function StorePage() {
         </div>
 
         {/* Coming Soon */}
-        <div className="border border-dashed border-gold/30 rounded-lg p-12 text-center">
+        <div className="border-2 border-dashed border-gold/60 rounded-lg p-12 text-center">
           <p
             className="text-gold text-3xl tracking-widest mb-3 uppercase"
             
@@ -139,11 +139,11 @@ export default function StorePage() {
             <input
               type="email"
               placeholder="your@email.com"
-              className="bg-white/10 border border-white/20 rounded px-4 py-3 text-athletic-white placeholder:text-white/40 focus:outline-none focus:border-gold flex-1 text-sm"
+              className="bg-white/10 border-2 border-gold/40 rounded px-4 py-3 text-athletic-white placeholder:text-white/40 focus:outline-none focus:border-gold flex-1 text-sm"
             />
             <button
               type="submit"
-              className="bg-gold text-deep-black font-bold px-6 py-3 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider text-sm"
+              className="font-bebas font-bold bg-gold text-deep-black px-6 py-3 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider text-sm"
               
             >
               Notify Me

@@ -51,6 +51,16 @@ Each route corresponds to one of the three business verticals:
 
 `app/layout.tsx` owns the `<Nav>` and the `<footer>` (email capture + social links). The footer email form is currently unconnected — it needs a Klaviyo/Mailchimp POST endpoint added as a Server Action or API route.
 
+The footer uses a two-column layout: `trenchman-logo.svg` (461×481px) on the left, stacked content (tagline, email form, social links) bottom-aligned to its right. On mobile everything stacks vertically.
+
+### Border convention
+
+All card, section, and UI borders use gold (`border-gold`) at `border-2` thickness — no white/muted borders on structural elements. Section dividers (`border-y`) also use `border-gold`. Form inputs use `border-2 border-gold/40`. This matches the flyer aesthetic.
+
+### TiltImage component
+
+`components/TiltImage.tsx` — 3D tilt-on-hover effect used for the 3-vertical strip icons on the homepage. Wraps `next/image` with mouse-tracking perspective transform. Includes a `bg-deep-black/20` overlay on each icon.
+
 ### Font variable pattern
 
 Because Rockwell Extra Bold isn't available via `next/font`, it's applied with inline `style` props directly on headline elements. Don't refactor this to a Tailwind class — the font stack won't resolve correctly on systems without the font unless the fallback chain is intact.
