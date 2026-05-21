@@ -25,7 +25,7 @@ export default function RecruitingPage() {
         </p>
         <Link
           href="/academy#register"
-          className="inline-block bg-gold text-deep-black font-bold text-lg px-10 py-4 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
+          className="font-bebas font-bold inline-block bg-gold text-deep-black text-lg px-10 py-4 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
           
         >
           Add Highlight Reel — $75
@@ -35,8 +35,8 @@ export default function RecruitingPage() {
       {/* What's Included */}
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2
-          className="text-gold text-4xl tracking-widest mb-10 uppercase"
-          
+          className="font-novecento text-gold text-4xl tracking-widest mb-10 uppercase"
+
         >
           What&apos;s Included
         </h2>
@@ -63,7 +63,7 @@ export default function RecruitingPage() {
               desc: "We bring coaches to the camp. Your performance gets evaluated in real time, not just on tape.",
             },
           ].map((item) => (
-            <div key={item.title} className="border border-white/10 rounded-lg p-8 flex gap-5">
+            <div key={item.title} className="border-2 border-gold/50 rounded-lg p-8 flex gap-5">
               <span className="text-3xl flex-shrink-0">{item.icon}</span>
               <div>
                 <p
@@ -83,7 +83,7 @@ export default function RecruitingPage() {
       <section className="bg-white/5 py-16 px-6">
         <div className="max-w-5xl mx-auto">
           <h2
-            className="text-gold text-4xl tracking-widest mb-12 text-center uppercase"
+            className="font-novecento text-gold text-4xl tracking-widest mb-12 text-center uppercase"
             
           >
             How It Works
@@ -115,7 +115,7 @@ export default function RecruitingPage() {
       {/* College Coach Network */}
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2
-          className="text-gold text-4xl tracking-widest mb-6 uppercase"
+          className="font-novecento text-gold text-4xl tracking-widest mb-6 uppercase"
           
         >
           College Coach Network
@@ -127,7 +127,7 @@ export default function RecruitingPage() {
           {Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
-              className="border border-white/10 rounded-lg h-20 flex items-center justify-center text-white/20 text-xs text-center px-2"
+              className="border-2 border-gold/30 rounded-lg h-20 flex items-center justify-center text-white/20 text-xs text-center px-2"
             >
               Coach Logo
             </div>
@@ -139,7 +139,7 @@ export default function RecruitingPage() {
       </section>
 
       {/* Add-On CTA */}
-      <section className="bg-gold/10 border-y border-gold/30 py-16 px-6 text-center">
+      <section className="bg-gold/10 border-y-2 border-gold py-16 px-6 text-center">
         <p
           className="text-gold text-4xl tracking-widest mb-4 uppercase"
           
@@ -151,7 +151,7 @@ export default function RecruitingPage() {
         </p>
         <Link
           href="/academy#register"
-          className="inline-block bg-gold text-deep-black font-bold text-xl px-12 py-5 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
+          className="font-bebas font-bold inline-block bg-gold text-deep-black text-xl px-12 py-5 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
           
         >
           Register + Add Reel — $225
@@ -167,7 +167,7 @@ export default function RecruitingPage() {
           For Coaches & Trainers
         </p>
         <h2
-          className="text-athletic-white text-4xl tracking-widest mb-4 uppercase"
+          className="font-novecento text-athletic-white text-4xl tracking-widest mb-4 uppercase"
           
         >
           Bring Trenchman Academy to Your City
@@ -179,21 +179,21 @@ export default function RecruitingPage() {
           <input
             type="text"
             placeholder="Your name"
-            className="bg-white/10 border border-white/20 rounded px-4 py-3 text-athletic-white placeholder:text-white/40 focus:outline-none focus:border-gold text-sm"
+            className="bg-white/10 border-2 border-gold/40 rounded px-4 py-3 text-athletic-white placeholder:text-white/40 focus:outline-none focus:border-gold text-sm"
           />
           <input
             type="email"
             placeholder="Your email"
-            className="bg-white/10 border border-white/20 rounded px-4 py-3 text-athletic-white placeholder:text-white/40 focus:outline-none focus:border-gold text-sm"
+            className="bg-white/10 border-2 border-gold/40 rounded px-4 py-3 text-athletic-white placeholder:text-white/40 focus:outline-none focus:border-gold text-sm"
           />
           <input
             type="text"
             placeholder="Your city / market"
-            className="bg-white/10 border border-white/20 rounded px-4 py-3 text-athletic-white placeholder:text-white/40 focus:outline-none focus:border-gold text-sm"
+            className="bg-white/10 border-2 border-gold/40 rounded px-4 py-3 text-athletic-white placeholder:text-white/40 focus:outline-none focus:border-gold text-sm"
           />
           <button
             type="submit"
-            className="bg-gold text-deep-black font-bold py-3 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider text-sm"
+            className="font-bebas font-bold bg-gold text-deep-black py-3 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider text-sm"
             
           >
             Submit Interest

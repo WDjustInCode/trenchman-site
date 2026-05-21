@@ -1,21 +1,22 @@
 import Link from "next/link";
-import Image from "next/image";
+import HeroVideo from "@/components/HeroVideo";
+import TiltImage from "@/components/TiltImage";
 
 const verticals = [
   {
-    icon: "🏈",
+    icon: "/academy.png",
     label: "Academy",
     description: "Position-specific training. Grades 3–12.",
     href: "/academy",
   },
   {
-    icon: "👕",
+    icon: "/gear.png",
     label: "Gear Store",
     description: "Represent the Trench.",
     href: "/store",
   },
   {
-    icon: "🎬",
+    icon: "/recruiting.png",
     label: "Recruiting",
     description: "Get in front of college coaches.",
     href: "/recruiting",
@@ -53,16 +54,7 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/linemen.jpg"
-            alt="Trenchman Academy"
-            fill
-            className="object-cover opacity-25"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-deep-black/30 via-deep-black/50 to-deep-black" />
-        </div>
+        <HeroVideo />
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <h1
             className="font-rockwell text-5xl md:text-7xl lg:text-8xl font-bold uppercase leading-none mb-6 text-athletic-white"
@@ -79,14 +71,14 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/academy#register"
-              className="bg-gold text-deep-black font-bold text-lg px-8 py-4 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
+              className="font-bebas font-bold bg-gold text-deep-black text-lg px-8 py-4 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider leading-none inline-flex items-center"
               
             >
               Register for a Camp
             </Link>
             <Link
               href="/store"
-              className="border-2 border-athletic-white text-athletic-white font-bold text-lg px-8 py-4 rounded hover:bg-white/10 transition-colors uppercase tracking-wider"
+              className="font-bebas font-bold border-2 border-gold text-gold text-lg px-8 py-4 rounded hover:bg-gold/10 transition-colors uppercase tracking-wider"
               
             >
               Shop Gear
@@ -101,16 +93,18 @@ export default function Home() {
           <Link
             key={v.href}
             href={v.href}
-            className="group border border-gold/30 rounded-lg p-8 hover:border-gold hover:bg-gold/5 transition-all text-center"
+            className="group rounded-lg p-8 hover:bg-gold/5 transition-all text-center"
           >
-            <div className="text-4xl mb-4">{v.icon}</div>
+            <div className="mb-4 flex justify-center">
+              <TiltImage src={v.icon} alt={v.label} />
+            </div>
             <p
-              className="text-gold text-2xl tracking-widest mb-2 uppercase"
+              className="font-bebas text-athletic-white/90 text-2xl tracking-widest mb-2 uppercase"
               
             >
               {v.label}
             </p>
-            <p className="text-athletic-white/70 text-sm">{v.description}</p>
+            <p className="text-gold text-sm">{v.description}</p>
           </Link>
         ))}
       </section>
@@ -119,7 +113,7 @@ export default function Home() {
       <section className="bg-white/5 py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <h2
-            className="text-gold text-4xl tracking-widest text-center mb-12 uppercase"
+            className="font-novecento text-gold text-4xl tracking-widest text-center mb-12 uppercase"
             
           >
             From the Trenches
@@ -128,7 +122,7 @@ export default function Home() {
             {testimonials.map((t) => (
               <div
                 key={t.name}
-                className="border border-white/10 rounded-lg p-6"
+                className="border-2 border-gold/50 rounded-lg p-6"
               >
                 <p className="text-athletic-white/90 text-sm italic mb-4">
                   &ldquo;{t.quote}&rdquo;
@@ -144,8 +138,8 @@ export default function Home() {
       {/* Upcoming Camps */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <h2
-          className="text-gold text-4xl tracking-widest mb-10 uppercase"
-          
+          className="font-novecento text-gold text-4xl tracking-widest mb-10 uppercase"
+
         >
           Upcoming Camps
         </h2>
@@ -153,18 +147,18 @@ export default function Home() {
           {camps.map((camp) => (
             <div
               key={camp.city + camp.date}
-              className="flex flex-col sm:flex-row sm:items-center justify-between border border-white/10 rounded-lg px-6 py-5 gap-4 hover:border-gold/40 transition-colors"
+              className="flex flex-col sm:flex-row sm:items-center justify-between border-2 border-gold/40 rounded-lg px-6 py-5 gap-4 hover:border-gold transition-colors"
             >
               <div>
-                <p className="text-athletic-white font-bold text-lg">{camp.city}</p>
+                <p className="font-bebas text-athletic-white text-lg tracking-widest uppercase">{camp.city}</p>
                 <p className="text-athletic-white/60 text-sm">{camp.date}</p>
               </div>
               <div className="flex items-center gap-6 text-sm">
-                <span className="text-gold font-bold">{camp.price}</span>
-                <span className="text-athletic-white/60">{camp.spots} spots left</span>
+                <span className="font-bebas text-gold text-base tracking-widest">{camp.price}</span>
+                <span className="font-bebas text-athletic-white/60 tracking-widest">{camp.spots} spots left</span>
                 <Link
                   href="/academy#register"
-                  className="bg-gold text-deep-black font-bold px-5 py-2 rounded hover:bg-gold/80 transition-colors uppercase text-xs tracking-wider"
+                  className="font-bebas font-bold bg-gold text-deep-black px-5 py-2 rounded hover:bg-gold/80 transition-colors uppercase text-sm tracking-wider"
                   
                 >
                   Register
@@ -176,7 +170,7 @@ export default function Home() {
         <div className="mt-6 text-center">
           <Link
             href="/academy"
-            className="text-gold hover:underline text-sm tracking-wider uppercase"
+            className="font-bebas text-gold hover:underline text-sm tracking-wider uppercase"
             
           >
             View Full Schedule →
@@ -185,13 +179,13 @@ export default function Home() {
       </section>
 
       {/* Email Capture */}
-      <section className="bg-gold/10 border-y border-gold/30 py-16 px-6">
+      <section className="bg-gold/10 border-y-2 border-gold py-16 px-6">
         <div className="max-w-xl mx-auto text-center">
           <h2
-            className="text-gold text-4xl tracking-widest mb-3 uppercase"
+            className="font-novecento text-gold text-4xl tracking-widest mb-3 uppercase"
             
           >
-            Join the Trench
+            ★&nbsp;&nbsp;&nbsp;Join the Trench&nbsp;&nbsp;&nbsp;★
           </h2>
           <p className="text-athletic-white/70 text-sm mb-8">
             Camp alerts, recruiting tips, and gear drops — straight to your inbox.
@@ -200,16 +194,16 @@ export default function Home() {
             <input
               type="text"
               placeholder="First name"
-              className="bg-white/10 border border-white/20 rounded px-4 py-3 text-athletic-white placeholder:text-white/40 focus:outline-none focus:border-gold flex-1"
+              className="bg-white/10 border-2 border-gold/40 rounded px-4 py-3 text-athletic-white placeholder:text-white/40 focus:outline-none focus:border-gold flex-1"
             />
             <input
               type="email"
               placeholder="Email address"
-              className="bg-white/10 border border-white/20 rounded px-4 py-3 text-athletic-white placeholder:text-white/40 focus:outline-none focus:border-gold flex-1"
+              className="bg-white/10 border-2 border-gold/40 rounded px-4 py-3 text-athletic-white placeholder:text-white/40 focus:outline-none focus:border-gold flex-1"
             />
             <button
               type="submit"
-              className="bg-gold text-deep-black font-bold px-8 py-3 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
+              className="font-bebas font-bold bg-gold text-deep-black px-8 py-3 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
               
             >
               Join

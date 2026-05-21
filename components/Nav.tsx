@@ -19,7 +19,7 @@ export default function Nav() {
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/trenchman-logo.svg"
+            src="/trenchman-logomark-gold.svg"
             alt="Trenchman Academy"
             width={36}
             height={36}
@@ -43,9 +43,9 @@ export default function Nav() {
           ))}
           <Link
             href="/academy#register"
-            className="bg-gold text-deep-black font-bold text-sm px-5 py-2 rounded hover:bg-gold/80 transition-colors font-bebas tracking-widest"
+            className="bg-gold text-deep-black font-bold text-sm px-5 py-2 rounded hover:bg-gold/80 transition-colors font-bebas tracking-widest uppercase"
           >
-            Register Now
+            REGISTER
           </Link>
         </div>
 
@@ -81,7 +81,7 @@ export default function Nav() {
           <Link
             href="/academy#register"
             onClick={() => setOpen(false)}
-            className="bg-gold text-deep-black font-bold px-5 py-3 rounded text-center font-bebas tracking-widest text-lg"
+            className="bg-gold text-deep-black font-bold px-5 py-3 rounded text-center font-bebas tracking-widest text-lg uppercase"
           >
             Register Now
           </Link>

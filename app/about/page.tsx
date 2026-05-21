@@ -42,7 +42,7 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="relative h-80 md:h-full min-h-[300px] rounded-lg overflow-hidden border border-gold/20">
+          <div className="relative h-80 md:h-full min-h-[300px] rounded-lg overflow-hidden border-2 border-gold/60">
             <Image
               src="/trenchman-branding-2.png"
               alt="Trenchman Academy"
@@ -73,7 +73,7 @@ export default function AboutPage() {
       {/* Why Linemen */}
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2
-          className="text-gold text-4xl tracking-widest mb-8 uppercase"
+          className="font-novecento text-gold text-4xl tracking-widest mb-8 uppercase"
           
         >
           Why Linemen?
@@ -96,7 +96,7 @@ export default function AboutPage() {
               desc: "Technique-driven positions have the highest coaching upside. A great lesson on footwork at age 12 pays off for 10 years.",
             },
           ].map((item) => (
-            <div key={item.label} className="border border-white/10 rounded-lg p-8 text-center">
+            <div key={item.label} className="border-2 border-gold/50 rounded-lg p-8 text-center">
               <p
                 className="font-rockwell text-gold text-5xl font-bold mb-2"
               >
@@ -117,7 +117,7 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="py-20 px-6 text-center">
         <h2
-          className="text-gold text-5xl tracking-widest mb-6 uppercase"
+          className="font-novecento text-gold text-5xl tracking-widest mb-6 uppercase"
           
         >
           Ready to Join the Trench?
@@ -125,14 +125,14 @@ export default function AboutPage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/academy#register"
-            className="bg-gold text-deep-black font-bold text-lg px-10 py-4 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
+            className="font-bebas font-bold bg-gold text-deep-black text-lg px-10 py-4 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
             
           >
             Register for a Camp
           </Link>
           <Link
             href="/store"
-            className="border-2 border-athletic-white text-athletic-white font-bold text-lg px-10 py-4 rounded hover:bg-white/10 transition-colors uppercase tracking-wider"
+            className="font-bebas font-bold border-2 border-gold text-gold text-lg px-10 py-4 rounded hover:bg-gold/10 transition-colors uppercase tracking-wider"
             
           >
             Shop Gear
