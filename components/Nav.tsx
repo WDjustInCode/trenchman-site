@@ -4,6 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 
+const homeLinks = [
+  { label: "Dark (Classic)", href: "/" },
+  { label: "Light", href: "/light" },
+  { label: "Dark + Ribbon", href: "/home-alt" },
+];
+
 const links = [
   { label: "Academy", href: "/academy" },
   { label: "Gear Store", href: "/store" },
@@ -13,6 +19,7 @@ const links = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [homeOpen, setHomeOpen] = useState(false);
 
   return (
     <nav className="sticky top-0 z-50 bg-deep-black/95 backdrop-blur border-b border-gold/20">
@@ -32,6 +39,34 @@ export default function Nav() {
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
+          {/* Home dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setHomeOpen(true)}
+            onMouseLeave={() => setHomeOpen(false)}
+          >
+            <button className="font-bebas tracking-widest text-athletic-white hover:text-gold transition-colors text-sm flex items-center gap-1">
+              Home
+              <svg className="w-3 h-3 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
+            {homeOpen && (
+              <div className="absolute top-full left-0 mt-2 w-44 bg-deep-black border border-gold/40 rounded shadow-lg py-1 z-50">
+                {homeLinks.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    onClick={() => setHomeOpen(false)}
+                    className="block px-4 py-2 font-bebas tracking-widest text-athletic-white/80 hover:text-gold hover:bg-gold/5 transition-colors text-sm"
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
           {links.map((l) => (
             <Link
               key={l.href}
@@ -68,16 +103,29 @@ export default function Nav() {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden bg-deep-black border-t border-gold/20 px-6 py-4 flex flex-col gap-4">
-          {links.map((l) => (
+          <p className="font-bebas tracking-widest text-gold/60 text-xs uppercase">Home</p>
+          {homeLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="font-bebas tracking-widest text-athletic-white hover:text-gold transition-colors text-lg"
+              className="font-bebas tracking-widest text-athletic-white/80 hover:text-gold transition-colors text-lg pl-3"
             >
               {l.label}
             </Link>
           ))}
+          <div className="border-t border-gold/10 pt-2 flex flex-col gap-4">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="font-bebas tracking-widest text-athletic-white hover:text-gold transition-colors text-lg"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </div>
           <Link
             href="/academy#register"
             onClick={() => setOpen(false)}
