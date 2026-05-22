@@ -71,7 +71,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/academy#register"
-              className="font-bebas font-bold bg-gold text-deep-black text-lg px-8 py-4 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider leading-none inline-flex items-center"
+              className="font-bebas font-bold bg-gold text-deep-black text-lg px-8 py-4 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider leading-none inline-flex items-center justify-center"
               
             >
               Register for a Camp
@@ -99,7 +99,7 @@ export default function Home() {
               <TiltImage src={v.icon} alt={v.label} />
             </div>
             <p
-              className="font-bebas text-athletic-white/90 text-2xl tracking-widest mb-2 uppercase"
+              className="font-novecento text-athletic-white/90 text-2xl tracking-widest mb-2 uppercase"
               
             >
               {v.label}
@@ -182,10 +182,10 @@ export default function Home() {
       <section className="bg-gold/10 border-y-2 border-gold py-16 px-6">
         <div className="max-w-xl mx-auto text-center">
           <h2
-            className="font-novecento text-gold text-4xl tracking-widest mb-3 uppercase"
+            className="font-novecento text-gold text-3xl sm:text-4xl tracking-widest mb-3 uppercase whitespace-nowrap"
             
           >
-            ★&nbsp;&nbsp;&nbsp;Join the Trench&nbsp;&nbsp;&nbsp;★
+            ★&nbsp;&nbsp;Join the Trench&nbsp;&nbsp;★
           </h2>
           <p className="text-athletic-white/70 text-sm mb-8">
             Camp alerts, recruiting tips, and gear drops — straight to your inbox.
