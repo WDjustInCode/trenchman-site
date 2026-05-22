@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import HeroVideo from "@/components/HeroVideo";
 import TiltImage from "@/components/TiltImage";
+import AltNav from "@/components/AltNav";
 
 const verticals = [
   {
@@ -53,45 +53,16 @@ const testimonials = [
 export default function HomeAlt() {
   return (
     <>
-      {/* Hero — overflow-visible so ribbon can extend above into the nav */}
-      <section className="relative min-h-[90vh] flex items-center justify-center">
+      {/* Hero — full viewport, AltNav floats over it */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <AltNav />
         <HeroVideo />
-
-        {/* Ribbon pendant — hangs from nav bottom into hero, desktop only */}
-        <div
-          className="absolute left-1/2 -translate-x-1/2 z-[60] pointer-events-none hidden md:block"
-          style={{ width: 84, height: 196, top: -32 }}
-        >
-          {/* Gold border layer */}
-          <div
-            className="absolute inset-0 bg-gold"
-            style={{ clipPath: "polygon(0 0, 100% 0, 100% 82%, 50% 100%, 0 82%)" }}
-          />
-          {/* Deep-black fill with logomark — 2px inset on sides creates gold border */}
-          <div
-            className="absolute inset-y-0 bg-deep-black flex justify-center pt-3"
-            style={{
-              left: 2,
-              right: 2,
-              clipPath: "polygon(0 0, 100% 0, 100% 82%, 50% 100%, 0 82%)",
-            }}
-          >
-            <Image
-              src="/trenchman-logomark-gold.svg"
-              alt="Trenchman Academy"
-              width={56}
-              height={84}
-              className="w-auto"
-            />
-          </div>
-        </div>
-
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <h1 className="font-rockwell text-5xl md:text-7xl lg:text-8xl font-bold uppercase leading-none mb-6 text-athletic-white">
             Built for the Athletes Who Fight in the{" "}
             <span className="text-gold">Trenches.</span>
           </h1>
-          <p className="font-bebas text-xl md:text-xl tracking-widest text-athletic-white/80 mb-10 uppercase">
+          <p className="font-bebas text-xl tracking-widest text-athletic-white/80 mb-10 uppercase">
             Grades 3–12 &bull; Position-Specific &bull; Real Coaching
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -217,6 +188,13 @@ export default function HomeAlt() {
           </form>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-deep-black py-12 px-6 mt-20">
+        <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-gold/20 text-center text-white/40 text-xs">
+          © {new Date().getFullYear()} Trenchman Academy. All rights reserved.
+        </div>
+      </footer>
     </>
   );
 }
