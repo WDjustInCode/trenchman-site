@@ -1,6 +1,7 @@
 import Link from "next/link";
 import HeroVideo from "@/components/HeroVideo";
 import TiltImage from "@/components/TiltImage";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const verticals = [
   {
@@ -56,6 +57,9 @@ export default function Home() {
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <HeroVideo />
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+          <div className="flex justify-center mb-6">
+            <ThemeToggle theme="dark" />
+          </div>
           <h1
             className="font-rockwell text-5xl md:text-7xl lg:text-8xl font-bold uppercase leading-none mb-6 text-athletic-white"
           >

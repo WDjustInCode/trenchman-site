@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
   { label: "Academy", href: "/academy" },
@@ -33,7 +32,6 @@ export default function LightNav() {
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
-          <ThemeToggle theme="light" />
           {links.map((l) => (
             <Link
               key={l.href}
