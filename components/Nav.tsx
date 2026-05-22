@@ -25,7 +25,7 @@ export default function Nav() {
             height={36}
             className="h-9 w-auto"
           />
-          <span className="font-novecento text-gold text-xl tracking-widest hidden sm:block">
+          <span className="font-novecento text-athletic-white/90 text-2xl tracking-widest">
             TRENCHMAN ACADEMY
           </span>
         </Link>
