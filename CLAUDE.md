@@ -31,7 +31,7 @@ There are no tests configured yet.
 | Rockwell Extra Bold | System | `style={{ fontFamily: "'Rockwell Extra Bold', Georgia, serif" }}` — hero headlines only |
 | Body | Calibri | default body, no utility class needed |
 
-All pages use a dark background (`#080706`) with gold headlines/CTAs and white/muted body text.
+The dark pages use a `#080706` background with gold headlines/CTAs and white/muted body text. Light pages use a warm parchment background (`#F4F1EC` / `#ECEAE4`) with deep-black text and gold accents.
 
 ## Architecture
 
@@ -47,9 +47,33 @@ Each route corresponds to one of the three business verticals:
 | `/recruiting` | Recruiting exposure | Add $75 highlight reel upsell at checkout |
 | `/about` | Brand story | Trust-building; no direct conversion CTA |
 
+### Home page variants (design exploration)
+
+Four home page concepts are available for client review, selectable via the "Home" dropdown in every nav:
+
+| Route | Theme | Nav style |
+|-------|-------|-----------|
+| `/` | Dark (classic) | Sticky dark nav, gold logomark |
+| `/home-alt` | Dark Alt 1 | Absolute gradient nav (black→transparent), gold logomark h-14 |
+| `/light` | Light | Sticky white nav, black logomark |
+| `/light-alt` | Light Alt 1 | Absolute gradient nav (white→transparent), black logomark h-14 |
+
+The alt pages render their own nav inline and are excluded from the root layout's `ConditionalNav`/`ConditionalFooter` (see `components/ConditionalRootChrome.tsx`). Add new excluded paths there when adding standalone page variants.
+
+### Nav components
+
+| Component | Used on | Style |
+|-----------|---------|-------|
+| `components/Nav.tsx` | All standard dark pages | Sticky, `bg-deep-black/95`, gold logomark `h-9` |
+| `components/LightNav.tsx` | `/light` | Sticky, `bg-white/95`, black logomark `h-9` |
+| `components/AltNav.tsx` | `/home-alt` | Absolute, gradient dark→transparent, gold logomark `h-14` |
+| `components/LightAltNav.tsx` | `/light-alt` | Absolute, gradient white→transparent, black logomark `h-14` |
+
+All four navs share the same Home dropdown (`homeLinks` array) — keep them in sync when adding variants. The dropdown uses a transparent bridge `<div>` (`h-2`) between the trigger and panel to prevent `onMouseLeave` from firing during mouse transit.
+
 ### Shared layout
 
-`app/layout.tsx` owns the `<Nav>` and the `<footer>` (email capture + social links). The footer email form is currently unconnected — it needs a Klaviyo/Mailchimp POST endpoint added as a Server Action or API route.
+`app/layout.tsx` renders `ConditionalNav` and `ConditionalFooter` (both from `components/ConditionalRootChrome.tsx`), which suppress the root chrome on pages that manage their own nav/footer. The footer email form is currently unconnected — it needs a Klaviyo/Mailchimp POST endpoint added as a Server Action or API route.
 
 The footer uses a two-column layout: `trenchman-logo.svg` (461×481px) on the left, stacked content (tagline, email form, social links) bottom-aligned to its right. On mobile everything stacks vertically.
 
@@ -59,7 +83,7 @@ All card, section, and UI borders use gold (`border-gold`) at `border-2` thickne
 
 ### TiltImage component
 
-`components/TiltImage.tsx` — 3D tilt-on-hover effect used for the 3-vertical strip icons on the homepage. Wraps `next/image` with mouse-tracking perspective transform. Includes a `bg-deep-black/20` overlay on each icon.
+`components/TiltImage.tsx` — 3D tilt-on-hover effect used for the 3-vertical strip icons. Accepts an optional `overlay` prop (default `true`) that controls the `bg-deep-black/20` overlay — pass `overlay={false}` on light-background pages.
 
 ### Font variable pattern
 
