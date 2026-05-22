@@ -7,7 +7,7 @@ import { useState } from "react";
 const homeLinks = [
   { label: "Dark (Classic)", href: "/" },
   { label: "Light", href: "/light" },
-  { label: "Dark + Ribbon", href: "/home-alt" },
+  { label: "Dark Alt 1", href: "/home-alt" },
 ];
 
 const links = [
