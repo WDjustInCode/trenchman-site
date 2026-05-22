@@ -52,6 +52,8 @@ export default function LightNav() {
               </svg>
             </button>
             {homeOpen && (
+              <>
+              <div className="absolute top-full left-0 w-full h-2" />
               <div className="absolute top-full left-0 mt-2 w-44 bg-white border border-gold/40 rounded shadow-lg py-1 z-50">
                 {homeLinks.map((l) => (
                   <Link
@@ -64,6 +66,7 @@ export default function LightNav() {
                   </Link>
                 ))}
               </div>
+              </>
             )}
           </div>
 
