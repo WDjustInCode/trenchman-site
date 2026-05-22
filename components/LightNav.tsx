@@ -8,6 +8,8 @@ const homeLinks = [
   { label: "Dark (Classic)", href: "/" },
   { label: "Light", href: "/light" },
   { label: "Dark Alt 1", href: "/home-alt" },
+
+  { label: "Light Alt 1", href: "/light-alt" },
 ];
 
 const links = [
