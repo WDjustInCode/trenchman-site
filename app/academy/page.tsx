@@ -100,11 +100,11 @@ export default function AcademyPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           {["Register", "Show Up", "Level Up"].map((step, i) => (
             <div key={step} className="flex flex-col items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-gold text-deep-black flex items-center justify-center text-2xl font-bold">
-                {i + 1}
+              <div className="w-16 h-16 rounded-full bg-gold text-deep-black flex items-center justify-center text-4xl font-bold leading-none">
+                <span className="-translate-y-[2px] inline-block">{i + 1}</span>
               </div>
               <p
-                className="text-gold text-2xl tracking-widest uppercase"
+                className="text-athletic-white/90 font-bebas text-2xl tracking-wide uppercase"
                 
               >
                 {step}
