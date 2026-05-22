@@ -5,9 +5,9 @@ import Image from "next/image";
 import { useState } from "react";
 
 const homeLinks = [
-  { label: "Dark (Classic)", href: "/" },
-  { label: "Light", href: "/light" },
+  { label: "Dark", href: "/" },
   { label: "Dark Alt 1", href: "/home-alt" },
+  { label: "Light", href: "/light" },
   { label: "Light Alt 1", href: "/light-alt" },
 ];
 
