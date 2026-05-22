@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import TiltImage from "@/components/TiltImage";
 import LightNav from "@/components/LightNav";
-import ThemeToggle from "@/components/ThemeToggle";
 
 const verticals = [
   {
@@ -67,10 +66,7 @@ export default function LightHome() {
           }}
         />
         <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <div className="flex justify-center mb-8">
-            <ThemeToggle theme="light" />
-          </div>
-          <p className="font-bebas text-gold tracking-[0.3em] text-sm uppercase mb-6">
+<p className="font-bebas text-gold tracking-[0.3em] text-sm uppercase mb-6">
             Grades 3–12 &bull; Position-Specific &bull; Real Coaching
           </p>
           <h1
