@@ -43,7 +43,7 @@ Each route corresponds to one of the three business verticals:
 |-------|----------|-------------------|
 | `/` | All three | Awareness → split traffic to the right vertical |
 | `/academy` | Training camps | Register for a camp (Stripe / RegFox embed — not yet wired) |
-| `/store` | Merch & gear | Add to cart (Shopify — not yet wired) |
+| `/store` | Merch & gear | Add to cart (Shopify — wired via Storefront API) |
 | `/recruiting` | Recruiting exposure | Add $75 highlight reel upsell at checkout |
 | `/about` | Brand story | Trust-building; no direct conversion CTA |
 
@@ -89,9 +89,33 @@ All card, section, and UI borders use gold (`border-gold`) at `border-2` thickne
 
 Because Rockwell Extra Bold isn't available via `next/font`, it's applied with inline `style` props directly on headline elements. Don't refactor this to a Tailwind class — the font stack won't resolve correctly on systems without the font unless the fallback chain is intact.
 
+### Shopify integration
+
+`lib/shopify.ts` — Storefront API client using `@shopify/storefront-api-client`.
+
+- **Store domain:** `trenchman-academy.myshopify.com` (`NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN`)
+- **Token:** `NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN` (public storefront access token)
+- **API version:** `2025-07`
+
+Shopify collections (handles must match exactly):
+
+| Handle | Used by | Purpose |
+|--------|---------|---------|
+| `gear` | `/store` | Merch & apparel products |
+| `camp-tickets` | `/academy` | Camp registration products |
+| `frontpage` | — | Shopify default, unused |
+
+Key functions in `lib/shopify.ts`:
+- `getCollectionProducts(handle, first?)` — fetch products in a named collection
+- `getProducts(first?)` — fetch all products (not collection-scoped)
+- `createCheckout(variantId)` — creates a cart and returns the Shopify `checkoutUrl`
+
+`components/AddToCartButton.tsx` — client component that calls `createCheckout` and redirects to Shopify checkout. Used on both `/store` and `/academy`.
+
+Product tagging convention on `/store`: products tagged `apparel` appear under the Apparel section; products tagged `equipment` appear under Equipment. If neither tag is set, all gear products fall under Apparel.
+
 ### Planned integrations (not yet implemented)
 
-- **Camp registration:** RegFox or Jack Athletic embed on `/academy#register`
-- **E-commerce:** Shopify buy button or subdomain on `/store`
+- **Camp registration:** RegFox or Jack Athletic embed on `/academy#register` (currently uses Shopify `camp-tickets` collection as a placeholder)
 - **Email:** Klaviyo — forms on Home, footer, and `/store` waitlist need Server Actions wired to Klaviyo's API
 - **CMS:** Sanity or Notion-as-CMS for the camp schedule (currently hardcoded arrays in each page file)
