@@ -11,7 +11,7 @@ const verticals = [
   },
   {
     icon: "/gear.png",
-    label: "Gear Store",
+    label: "Store",
     description: "Represent the Trench.",
     href: "/store",
   },

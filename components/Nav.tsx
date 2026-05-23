@@ -13,7 +13,7 @@ const homeLinks = [
 
 const links = [
   { label: "Academy", href: "/academy" },
-  { label: "Gear Store", href: "/store" },
+  { label: "Store", href: "/store" },
   { label: "Recruiting", href: "/recruiting" },
   { label: "About", href: "/about" },
 ];

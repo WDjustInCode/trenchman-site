@@ -101,7 +101,8 @@ Shopify collections (handles must match exactly):
 
 | Handle | Used by | Purpose |
 |--------|---------|---------|
-| `gear` | `/store` | Merch & apparel products |
+| `gear` | `/store` Gear section | Training gear products |
+| `apparel` | `/store` Apparel section | Apparel & clothing products |
 | `camp-tickets` | `/academy` | Camp registration products |
 | `frontpage` | — | Shopify default, unused |
 
@@ -112,7 +113,7 @@ Key functions in `lib/shopify.ts`:
 
 `components/AddToCartButton.tsx` — client component that calls `createCheckout` and redirects to Shopify checkout. Used on both `/store` and `/academy`.
 
-Product tagging convention on `/store`: products tagged `apparel` appear under the Apparel section; products tagged `equipment` appear under Equipment. If neither tag is set, all gear products fall under Apparel.
+The `/store` page fetches two collections in parallel: `gear` (Gear section) and `apparel` (Apparel section). Products must be in the correct Shopify collection — tag-based filtering is no longer used.
 
 Both `/store` and `/academy` use `export const dynamic = "force-dynamic"` to prevent Next.js from statically caching Shopify data at build time.
 

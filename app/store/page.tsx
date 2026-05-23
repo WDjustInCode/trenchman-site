@@ -7,7 +7,7 @@ import { getCollectionProducts } from "@/lib/shopify";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Gear Store — Trenchman Academy",
+  title: "Store — Trenchman Academy",
   description:
     "Represent the Trench. Shop Trenchman Academy apparel, hats, and gear.",
 };
@@ -17,13 +17,10 @@ function formatPrice(amount: string) {
 }
 
 export default async function StorePage() {
-  const products = await getCollectionProducts("gear");
-
-  const apparel = products.filter((p) => p.tags.includes("apparel"));
-  const equipment = products.filter((p) => p.tags.includes("equipment"));
-  // Fall back: if no tags set yet, show all gear products under Apparel
-  const apparelList = apparel.length > 0 ? apparel : products;
-  const equipmentList = apparel.length > 0 ? equipment : [];
+  const [gearProducts, apparelProducts] = await Promise.all([
+    getCollectionProducts("gear"),
+    getCollectionProducts("apparel"),
+  ]);
 
   return (
     <>
@@ -61,13 +58,54 @@ export default async function StorePage() {
 
       {/* Product Grid */}
       <section className="max-w-6xl mx-auto px-6 py-8">
-        {apparelList.length > 0 && (
+        {gearProducts.length > 0 && (
+          <>
+            <h2 className="font-novecento text-gold text-3xl tracking-widest mb-8 uppercase">
+              Gear
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-16">
+              {gearProducts.map((product) => (
+                <div
+                  key={product.id}
+                  className="border-2 border-gold/40 rounded-lg overflow-hidden hover:border-gold transition-colors group"
+                >
+                  <div className="bg-white/5 h-48 flex items-center justify-center relative">
+                    {product.featuredImage ? (
+                      <Image
+                        src={product.featuredImage.url}
+                        alt={product.featuredImage.altText ?? product.title}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : (
+                      <span className="text-5xl">⚙️</span>
+                    )}
+                    {product.tags.includes("best-seller") && (
+                      <span className="absolute top-3 left-3 bg-gold text-deep-black text-xs px-2 py-1 rounded uppercase tracking-widest">
+                        Best Seller
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-4">
+                    <p className="text-athletic-white text-sm font-bold mb-1">{product.title}</p>
+                    <p className="text-gold font-bold">
+                      {formatPrice(product.priceRange.minVariantPrice.amount)}
+                    </p>
+                    <AddToCartButton variantId={product.variants.nodes[0].id} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+
+        {apparelProducts.length > 0 && (
           <>
             <h2 className="font-novecento text-gold text-3xl tracking-widest mb-8 uppercase">
               Apparel
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-16">
-              {apparelList.map((product) => (
+              {apparelProducts.map((product) => (
                 <div
                   key={product.id}
                   className="border-2 border-gold/40 rounded-lg overflow-hidden hover:border-gold transition-colors group"
@@ -102,43 +140,7 @@ export default async function StorePage() {
           </>
         )}
 
-        {equipmentList.length > 0 && (
-          <>
-            <h2 className="font-novecento text-gold text-3xl tracking-widest mb-8 uppercase">
-              Equipment
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-16">
-              {equipmentList.map((product) => (
-                <div
-                  key={product.id}
-                  className="border-2 border-gold/40 rounded-lg overflow-hidden hover:border-gold transition-colors"
-                >
-                  <div className="bg-white/5 h-48 flex items-center justify-center relative">
-                    {product.featuredImage ? (
-                      <Image
-                        src={product.featuredImage.url}
-                        alt={product.featuredImage.altText ?? product.title}
-                        fill
-                        className="object-cover"
-                      />
-                    ) : (
-                      <span className="text-5xl">🏋️</span>
-                    )}
-                  </div>
-                  <div className="p-4">
-                    <p className="text-athletic-white text-sm font-bold mb-1">{product.title}</p>
-                    <p className="text-gold font-bold">
-                      {formatPrice(product.priceRange.minVariantPrice.amount)}
-                    </p>
-                    <AddToCartButton variantId={product.variants.nodes[0].id} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </>
-        )}
-
-        {products.length === 0 && (
+        {gearProducts.length === 0 && apparelProducts.length === 0 && (
           <p className="text-athletic-white/50 text-center py-16">
             Products coming soon.
           </p>
