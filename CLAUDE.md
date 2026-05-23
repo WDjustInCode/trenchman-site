@@ -114,6 +114,10 @@ Key functions in `lib/shopify.ts`:
 
 Product tagging convention on `/store`: products tagged `apparel` appear under the Apparel section; products tagged `equipment` appear under Equipment. If neither tag is set, all gear products fall under Apparel.
 
+Both `/store` and `/academy` use `export const dynamic = "force-dynamic"` to prevent Next.js from statically caching Shopify data at build time.
+
+**Shopify publishing requirement:** products must be published to the "Online Store" sales channel in the Shopify admin to be returned by the Storefront API. Draft products or products with the sales channel unchecked will not appear.
+
 ### Planned integrations (not yet implemented)
 
 - **Camp registration:** RegFox or Jack Athletic embed on `/academy#register` (currently uses Shopify `camp-tickets` collection as a placeholder)
