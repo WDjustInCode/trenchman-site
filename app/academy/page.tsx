@@ -3,6 +3,8 @@ import Link from "next/link";
 import AddToCartButton from "@/components/AddToCartButton";
 import { getCollectionProducts } from "@/lib/shopify";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Academy — Trenchman Academy",
   description:
