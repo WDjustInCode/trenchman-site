@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AddToCartButton from "@/components/AddToCartButton";
+import CampList, { type Camp } from "@/components/CampList";
 import { getCollectionProducts } from "@/lib/shopify";
 
 export const dynamic = "force-dynamic";
@@ -76,15 +77,13 @@ export default async function AcademyPage() {
   const ticketProducts = await getCollectionProducts("camp-tickets");
 
   // Build camp schedule rows from metafields, sorted by date
-  const camps = ticketProducts
+  const camps: Camp[] = ticketProducts
     .map((p) => ({
-      product: p,
-      date: getMeta(p, "date") ?? "",
       location: getMeta(p, "location") ?? "",
-      ageGroup: getMeta(p, "age_group") ?? "",
+      date: getMeta(p, "date") ?? "",
+      ageGroup: getMeta(p, "age_group") ?? null,
       spots: getMeta(p, "spots_available"),
       price: `$${parseFloat(p.priceRange.minVariantPrice.amount).toFixed(0)}`,
-      variantId: p.variants.nodes[0]?.id ?? null,
     }))
     .filter((c) => c.date)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
@@ -156,61 +155,7 @@ export default async function AcademyPage() {
         >
           2025 Camp Schedule
         </h2>
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="border-b-2 border-gold/40">
-                {["Date", "Location", "Age Group", "Price", "Spots Left", ""].map((h) => (
-                  <th
-                    key={h}
-                    className="pb-4 text-athletic-white/50 text-xs uppercase tracking-widest pr-6"
-                  >
-                    {h}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {camps.length === 0 && (
-                <tr>
-                  <td colSpan={6} className="py-8 text-athletic-white/40 text-sm text-center">
-                    No camps scheduled yet — check back soon.
-                  </td>
-                </tr>
-              )}
-              {camps.map((camp) => (
-                <tr
-                  key={camp.date + camp.location}
-                  className="border-b border-gold/20"
-                >
-                  <td className="py-4 pr-6 text-athletic-white">{camp.date}</td>
-                  <td className="py-4 pr-6 text-athletic-white">{camp.location}</td>
-                  <td className="py-4 pr-6 text-athletic-white/70">{camp.ageGroup}</td>
-                  <td className="py-4 pr-6 text-gold font-bold">{camp.price}</td>
-                  <td className="py-4 pr-6 text-athletic-white/60">
-                    {camp.spots !== null ? `${camp.spots} left` : "—"}
-                  </td>
-                  <td className="py-4">
-                    {camp.variantId ? (
-                      <AddToCartButton
-                        variantId={camp.variantId}
-                        label="Register"
-                        className="bg-gold text-deep-black px-5 py-2 rounded hover:bg-gold/80 transition-colors uppercase text-sm tracking-wider"
-                      />
-                    ) : (
-                      <a
-                        href="#pricing"
-                        className="font-bebas font-bold bg-gold text-deep-black px-5 py-2 rounded hover:bg-gold/80 transition-colors uppercase text-sm tracking-wider inline-block"
-                      >
-                        Register
-                      </a>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <CampList camps={camps} registerHref="#pricing" />
       </section>
 
       {/* Pricing Tiers */}
@@ -256,8 +201,8 @@ export default async function AcademyPage() {
                       label={`Select ${t.tier}`}
                       className={
                         t.highlight
-                          ? "bg-gold text-deep-black hover:bg-gold/80"
-                          : "border-2 border-gold text-gold hover:bg-gold/10"
+                          ? "w-full bg-gold text-deep-black hover:bg-gold/80"
+                          : "w-full border-2 border-gold text-gold hover:bg-gold/10"
                       }
                     />
                   </div>

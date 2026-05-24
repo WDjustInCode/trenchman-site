@@ -1,6 +1,10 @@
 import Link from "next/link";
 import HeroVideo from "@/components/HeroVideo";
 import TiltImage from "@/components/TiltImage";
+import { getCollectionProducts } from "@/lib/shopify";
+import CampList, { type Camp } from "@/components/CampList";
+
+export const dynamic = "force-dynamic";
 
 const verticals = [
   {
@@ -23,12 +27,6 @@ const verticals = [
   },
 ];
 
-const camps = [
-  { city: "Charlotte, NC", date: "June 14, 2025", spots: 12, price: "$150" },
-  { city: "Atlanta, GA", date: "July 12, 2025", spots: 8, price: "$150" },
-  { city: "Raleigh, NC", date: "August 2, 2025", spots: 20, price: "$150" },
-];
-
 const testimonials = [
   {
     name: "Marcus T.",
@@ -49,7 +47,21 @@ const testimonials = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const ticketProducts = await getCollectionProducts("camp-tickets");
+
+  const camps: Camp[] = ticketProducts
+    .map((p) => ({
+      location: p.metafields?.find((m) => m?.key === "location")?.value ?? "",
+      date: p.metafields?.find((m) => m?.key === "date")?.value ?? "",
+      ageGroup: p.metafields?.find((m) => m?.key === "age_group")?.value ?? null,
+      spots: p.metafields?.find((m) => m?.key === "spots_available")?.value ?? null,
+      price: `$${parseFloat(p.priceRange.minVariantPrice.amount).toFixed(0)}`,
+    }))
+    .filter((c) => c.date)
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    .slice(0, 3);
+
   return (
     <>
       {/* Hero */}
@@ -143,30 +155,7 @@ export default function Home() {
         >
           Upcoming Camps
         </h2>
-        <div className="flex flex-col gap-4">
-          {camps.map((camp) => (
-            <div
-              key={camp.city + camp.date}
-              className="flex flex-col sm:flex-row sm:items-center justify-between border-2 border-gold/40 rounded-lg px-6 py-5 gap-4 hover:border-gold transition-colors"
-            >
-              <div>
-                <p className="font-bebas text-athletic-white text-lg tracking-widest uppercase">{camp.city}</p>
-                <p className="text-athletic-white/60 text-sm">{camp.date}</p>
-              </div>
-              <div className="flex items-center gap-6 text-sm">
-                <span className="font-bebas text-gold text-base tracking-widest">{camp.price}</span>
-                <span className="font-bebas text-athletic-white/60 tracking-widest">{camp.spots} spots left</span>
-                <Link
-                  href="/academy#register"
-                  className="font-bebas font-bold bg-gold text-deep-black px-5 py-2 rounded hover:bg-gold/80 transition-colors uppercase text-sm tracking-wider"
-                  
-                >
-                  Register
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
+        <CampList camps={camps} registerHref="/academy#register" />
         <div className="mt-6 text-center">
           <Link
             href="/academy"

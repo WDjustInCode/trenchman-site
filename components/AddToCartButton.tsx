@@ -22,7 +22,7 @@ export default function AddToCartButton({ variantId, label = "Add to Cart", clas
     }
   }
 
-  const base = "font-bebas font-bold w-full py-3 rounded uppercase tracking-wider text-sm transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed";
+  const base = "font-bebas font-bold py-3 rounded uppercase tracking-wider text-sm transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed";
   const defaultStyle = "mt-3 border-2 border-gold text-gold hover:bg-gold hover:text-deep-black";
 
   return (
