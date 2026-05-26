@@ -25,7 +25,7 @@ export default function LightAltNav() {
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 bg-gradient-to-b from-white via-white/70 to-transparent pb-10">
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between pt-4">
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-2">
           <Image
             src="/trenchman-logomark-black.svg"
             alt="Trenchman Academy"

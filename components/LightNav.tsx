@@ -25,7 +25,7 @@ export default function LightNav() {
   return (
     <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b-2 border-gold/30">
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-2">
           <Image
             src="/trenchman-logomark-black.svg"
             alt="Trenchman Academy"
