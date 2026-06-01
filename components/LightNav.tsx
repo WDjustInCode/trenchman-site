@@ -18,22 +18,22 @@ const links = [
   { label: "About", href: "/about" },
 ];
 
-export default function Nav() {
+export default function LightNav() {
   const [open, setOpen] = useState(false);
   const [homeOpen, setHomeOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-deep-black/95 backdrop-blur border-b border-gold/20">
+    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b-2 border-gold/30">
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/trenchman-logomark-gold.svg"
+            src="/trenchman-logomark-black.svg"
             alt="Trenchman Academy"
             width={36}
             height={36}
             className="h-9 w-auto"
           />
-          <span className="font-novecento text-athletic-white/90 text-2xl tracking-widest">
+          <span className="font-novecento text-deep-black text-2xl tracking-widest">
             TRENCHMAN ACADEMY
           </span>
         </Link>
@@ -46,7 +46,7 @@ export default function Nav() {
             onMouseEnter={() => setHomeOpen(true)}
             onMouseLeave={() => setHomeOpen(false)}
           >
-            <button className="font-bebas tracking-widest text-athletic-white hover:text-gold transition-colors text-sm flex items-center gap-1">
+            <button className="font-bebas tracking-widest text-deep-black hover:text-gold transition-colors text-sm flex items-center gap-1">
               Home
               <svg className="w-3 h-3 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -55,13 +55,13 @@ export default function Nav() {
             {homeOpen && (
               <>
               <div className="absolute top-full left-0 w-full h-2" />
-              <div className="absolute top-full left-0 mt-2 w-44 bg-deep-black border border-gold/40 rounded shadow-lg py-1 z-50">
+              <div className="absolute top-full left-0 mt-2 w-44 bg-white border border-gold/40 rounded shadow-lg py-1 z-50">
                 {homeLinks.map((l) => (
                   <Link
                     key={l.href}
                     href={l.href}
                     onClick={() => setHomeOpen(false)}
-                    className="block px-4 py-2 font-bebas tracking-widest text-athletic-white/80 hover:text-gold hover:bg-gold/5 transition-colors text-sm"
+                    className="block px-4 py-2 font-bebas tracking-widest text-deep-black/80 hover:text-gold hover:bg-gold/5 transition-colors text-sm"
                   >
                     {l.label}
                   </Link>
@@ -75,14 +75,14 @@ export default function Nav() {
             <Link
               key={l.href}
               href={l.href}
-              className="font-bebas tracking-widest text-athletic-white hover:text-gold transition-colors text-sm"
+              className="font-bebas tracking-widest text-deep-black hover:text-gold transition-colors text-sm"
             >
               {l.label}
             </Link>
           ))}
           <Link
             href="/academy#register"
-            className="bg-gold text-deep-black font-bold text-sm px-5 py-2 rounded hover:bg-gold/80 transition-colors font-bebas tracking-widest uppercase"
+            className="bg-gold text-white font-bold text-sm px-5 py-2 rounded hover:bg-gold/80 transition-colors font-bebas tracking-widest uppercase"
           >
             REGISTER
           </Link>
@@ -90,7 +90,7 @@ export default function Nav() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-athletic-white"
+          className="md:hidden text-deep-black"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -106,14 +106,14 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-deep-black border-t border-gold/20 px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-white border-t-2 border-gold/20 px-6 py-4 flex flex-col gap-4">
           <p className="font-bebas tracking-widest text-gold/60 text-xs uppercase">Home</p>
           {homeLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="font-bebas tracking-widest text-athletic-white/80 hover:text-gold transition-colors text-lg pl-3"
+              className="font-bebas tracking-widest text-deep-black/80 hover:text-gold transition-colors text-lg pl-3"
             >
               {l.label}
             </Link>
@@ -124,7 +124,7 @@ export default function Nav() {
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="font-bebas tracking-widest text-athletic-white hover:text-gold transition-colors text-lg"
+                className="font-bebas tracking-widest text-deep-black hover:text-gold transition-colors text-lg"
               >
                 {l.label}
               </Link>
@@ -133,7 +133,7 @@ export default function Nav() {
           <Link
             href="/academy#register"
             onClick={() => setOpen(false)}
-            className="bg-gold text-deep-black font-bold px-5 py-3 rounded text-center font-bebas tracking-widest text-lg uppercase"
+            className="bg-gold text-white font-bold px-5 py-3 rounded text-center font-bebas tracking-widest text-lg uppercase"
           >
             Register Now
           </Link>

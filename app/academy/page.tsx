@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import AddToCartButton from "@/components/AddToCartButton";
+import CampList, { type Camp } from "@/components/CampList";
+import { getCollectionProducts } from "@/lib/shopify";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Academy — Trenchman Academy",
@@ -7,29 +12,6 @@ export const metadata: Metadata = {
     "Position-specific lineman camps for grades 3–12. Register for an upcoming camp and level up your game.",
 };
 
-const camps = [
-  {
-    date: "June 14, 2025",
-    location: "Charlotte, NC",
-    ageGroup: "Grades 3–8",
-    price: "$150",
-    spots: 12,
-  },
-  {
-    date: "July 12, 2025",
-    location: "Atlanta, GA",
-    ageGroup: "Grades 3–12",
-    price: "$150",
-    spots: 8,
-  },
-  {
-    date: "August 2, 2025",
-    location: "Raleigh, NC",
-    ageGroup: "Grades 5–12",
-    price: "$150",
-    spots: 20,
-  },
-];
 
 const coaches = [
   {
@@ -63,7 +45,60 @@ const faqs = [
   },
 ];
 
-export default function AcademyPage() {
+const pricingTiers = [
+  {
+    tier: "General Admission",
+    price: "$150–175",
+    features: ["Full camp access", "Group instruction", "Coaching feedback", "Certificate of completion"],
+    highlight: false,
+    shopifyTitle: "General Admission",
+  },
+  {
+    tier: "Premium",
+    price: "$225–275",
+    features: ["Everything in General", "Individual highlight clip", "Video package included", "Priority drill placement"],
+    highlight: true,
+    shopifyTitle: "Premium",
+  },
+  {
+    tier: "Elite 1-on-1",
+    price: "$300–400",
+    features: ["Private 60-min session", "Personalized technique breakdown", "Film review with coach", "Recruiting guidance"],
+    highlight: false,
+    shopifyTitle: "Elite 1-on-1",
+  },
+];
+
+function getMeta(product: Awaited<ReturnType<typeof getCollectionProducts>>[number], key: string) {
+  return product.metafields?.find((m) => m?.key === key)?.value ?? null;
+}
+
+export default async function AcademyPage() {
+  const ticketProducts = await getCollectionProducts("camp-tickets");
+
+  // Build camp schedule rows from metafields, sorted by date
+  const camps: Camp[] = ticketProducts
+    .map((p) => ({
+      location: getMeta(p, "location") ?? "",
+      date: getMeta(p, "date") ?? "",
+      ageGroup: getMeta(p, "age_group") ?? null,
+      spots: getMeta(p, "spots_available"),
+      price: `$${parseFloat(p.priceRange.minVariantPrice.amount).toFixed(0)}`,
+    }))
+    .filter((c) => c.date)
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+  // Map Shopify products to pricing tier names (case-insensitive title match)
+  const variantByTier: Record<string, string> = {};
+  for (const product of ticketProducts) {
+    const match = pricingTiers.find(
+      (t) => t.shopifyTitle.toLowerCase() === product.title.toLowerCase()
+    );
+    if (match && product.variants.nodes[0]) {
+      variantByTier[match.tier] = product.variants.nodes[0].id;
+    }
+  }
+
   return (
     <>
       {/* Hero */}
@@ -76,14 +111,12 @@ export default function AcademyPage() {
         </h1>
         <p
           className="text-xl tracking-widest text-athletic-white/70 mb-10 uppercase"
-          
         >
           Position-Specific Lineman Camps &bull; Grades 3–12
         </p>
         <a
           href="#register"
           className="font-bebas font-bold inline-block bg-gold text-deep-black text-lg px-10 py-4 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
-          
         >
           Register for a Camp
         </a>
@@ -93,20 +126,16 @@ export default function AcademyPage() {
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2
           className="font-novecento text-gold text-4xl tracking-widest mb-12 text-center uppercase"
-
         >
           How It Works
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           {["Register", "Show Up", "Level Up"].map((step, i) => (
             <div key={step} className="flex flex-col items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-gold text-deep-black flex items-center justify-center text-2xl font-bold">
-                {i + 1}
+              <div className="w-16 h-16 rounded-full bg-gold text-deep-black flex items-center justify-center text-4xl font-bold leading-none">
+                <span className="-translate-y-[2px] inline-block">{i + 1}</span>
               </div>
-              <p
-                className="text-gold text-2xl tracking-widest uppercase"
-                
-              >
+              <p className="text-athletic-white/90 font-bebas text-2xl tracking-wide uppercase">
                 {step}
               </p>
               <p className="text-athletic-white/60 text-sm">
@@ -123,50 +152,10 @@ export default function AcademyPage() {
       <section id="register" className="max-w-6xl mx-auto px-6 py-16">
         <h2
           className="font-novecento text-gold text-4xl tracking-widest mb-10 uppercase"
-
         >
           2025 Camp Schedule
         </h2>
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="border-b-2 border-gold/40">
-                {["Date", "Location", "Age Group", "Price", "Spots Left", ""].map((h) => (
-                  <th
-                    key={h}
-                    className="pb-4 text-athletic-white/50 text-xs uppercase tracking-widest pr-6"
-                    
-                  >
-                    {h}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {camps.map((camp) => (
-                <tr
-                  key={camp.date + camp.location}
-                  className="border-b border-gold/20 hover:bg-white/5 transition-colors"
-                >
-                  <td className="py-4 pr-6 text-athletic-white">{camp.date}</td>
-                  <td className="py-4 pr-6 text-athletic-white">{camp.location}</td>
-                  <td className="py-4 pr-6 text-athletic-white/70">{camp.ageGroup}</td>
-                  <td className="py-4 pr-6 text-gold font-bold">{camp.price}</td>
-                  <td className="py-4 pr-6 text-athletic-white/60">{camp.spots} left</td>
-                  <td className="py-4">
-                    <a
-                      href="#pricing"
-                      className="font-bebas font-bold bg-gold text-deep-black px-5 py-2 rounded hover:bg-gold/80 transition-colors uppercase text-sm tracking-wider inline-block"
-                      
-                    >
-                      Register
-                    </a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <CampList camps={camps} registerHref="#pricing" />
       </section>
 
       {/* Pricing Tiers */}
@@ -174,31 +163,11 @@ export default function AcademyPage() {
         <div className="max-w-5xl mx-auto">
           <h2
             className="font-novecento text-gold text-4xl tracking-widest mb-10 text-center uppercase"
-            
           >
             Pricing Tiers
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                tier: "General Admission",
-                price: "$150–175",
-                features: ["Full camp access", "Group instruction", "Coaching feedback", "Certificate of completion"],
-                highlight: false,
-              },
-              {
-                tier: "Premium",
-                price: "$225–275",
-                features: ["Everything in General", "Individual highlight clip", "Video package included", "Priority drill placement"],
-                highlight: true,
-              },
-              {
-                tier: "Elite 1-on-1",
-                price: "$300–400",
-                features: ["Private 60-min session", "Personalized technique breakdown", "Film review with coach", "Recruiting guidance"],
-                highlight: false,
-              },
-            ].map((t) => (
+            {pricingTiers.map((t) => (
               <div
                 key={t.tier}
                 className={`rounded-lg p-8 border flex flex-col gap-4 ${
@@ -208,22 +177,14 @@ export default function AcademyPage() {
                 }`}
               >
                 {t.highlight && (
-                  <span
-                    className="text-xs text-deep-black bg-gold px-3 py-1 rounded-full w-fit uppercase tracking-widest"
-                    
-                  >
+                  <span className="text-xs text-deep-black bg-gold px-3 py-1 rounded-full w-fit uppercase tracking-widest">
                     Most Popular
                   </span>
                 )}
-                <p
-                  className="text-gold text-2xl tracking-widest uppercase"
-                  
-                >
+                <p className="text-gold text-2xl tracking-widest uppercase">
                   {t.tier}
                 </p>
-                <p
-                  className="font-rockwell text-athletic-white text-4xl font-bold"
-                >
+                <p className="font-rockwell text-athletic-white text-4xl font-bold">
                   {t.price}
                 </p>
                 <ul className="flex flex-col gap-2 mt-2">
@@ -233,17 +194,30 @@ export default function AcademyPage() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="#register"
-                  className={`font-bebas font-bold mt-auto text-center py-3 rounded uppercase tracking-wider text-sm transition-colors ${
-                    t.highlight
-                      ? "bg-gold text-deep-black hover:bg-gold/80"
-                      : "border-2 border-gold text-gold hover:bg-gold/10"
-                  }`}
-                  
-                >
-                  Select {t.tier}
-                </a>
+                {variantByTier[t.tier] ? (
+                  <div className="mt-auto">
+                    <AddToCartButton
+                      variantId={variantByTier[t.tier]}
+                      label={`Select ${t.tier}`}
+                      className={
+                        t.highlight
+                          ? "w-full bg-gold text-deep-black hover:bg-gold/80"
+                          : "w-full border-2 border-gold text-gold hover:bg-gold/10"
+                      }
+                    />
+                  </div>
+                ) : (
+                  <a
+                    href="#register"
+                    className={`font-bebas font-bold mt-auto text-center py-3 rounded uppercase tracking-wider text-sm transition-colors ${
+                      t.highlight
+                        ? "bg-gold text-deep-black hover:bg-gold/80"
+                        : "border-2 border-gold text-gold hover:bg-gold/10"
+                    }`}
+                  >
+                    Select {t.tier}
+                  </a>
+                )}
               </div>
             ))}
           </div>
@@ -254,7 +228,6 @@ export default function AcademyPage() {
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2
           className="font-novecento text-gold text-4xl tracking-widest mb-10 uppercase"
-
         >
           Your Coaches
         </h2>
@@ -266,10 +239,7 @@ export default function AcademyPage() {
               </div>
               <div>
                 <p className="text-athletic-white font-bold text-lg">{c.name}</p>
-                <p
-                  className="text-gold text-sm tracking-widest mb-2 uppercase"
-                  
-                >
+                <p className="text-gold text-sm tracking-widest mb-2 uppercase">
                   {c.role}
                 </p>
                 <p className="text-athletic-white/60 text-sm">{c.background}</p>
@@ -284,7 +254,6 @@ export default function AcademyPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="font-novecento text-gold text-4xl tracking-widest mb-10 uppercase"
-
           >
             FAQ
           </h2>
@@ -303,14 +272,12 @@ export default function AcademyPage() {
       <section className="py-20 px-6 text-center">
         <h2
           className="font-novecento text-gold text-5xl tracking-widest mb-6 uppercase"
-          
         >
           Ready to Work?
         </h2>
         <a
           href="#register"
           className="font-bebas font-bold inline-block bg-gold text-deep-black text-xl px-12 py-5 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
-          
         >
           Secure Your Spot
         </a>
