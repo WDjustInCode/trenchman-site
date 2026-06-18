@@ -28,7 +28,7 @@ export default function RootLayout({
         <ConditionalNav />
         <main>{children}</main>
         <ConditionalFooter>
-          <footer className="bg-deep-black py-12 px-6 mt-20">
+          <footer id="footer" className="bg-deep-black py-12 px-6 mt-20">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-end gap-10">
               <div className="flex-shrink-0">
                 <Image

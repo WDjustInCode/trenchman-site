@@ -130,13 +130,13 @@ export default function AboutPage() {
           >
             Register for a Camp
           </Link>
-          <Link
+          {/* Shop Gear CTA hidden until store launches */}
+          {/* <Link
             href="/store"
             className="font-bebas font-bold border-2 border-gold text-gold text-lg px-10 py-4 rounded hover:bg-gold/10 transition-colors uppercase tracking-wider"
-            
           >
             Shop Gear
-          </Link>
+          </Link> */}
         </div>
       </section>
     </>

@@ -9,18 +9,19 @@ const verticals = [
     description: "Position-specific training. Grades 3–12.",
     href: "/academy",
   },
-  {
-    icon: "/gear.png",
-    label: "Store",
-    description: "Represent the Trench.",
-    href: "/store",
-  },
-  {
-    icon: "/recruiting.png",
-    label: "Recruiting",
-    description: "Get in front of college coaches.",
-    href: "/recruiting",
-  },
+  // Hidden until store/recruiting launch — see CLAUDE.md planned integrations
+  // {
+  //   icon: "/gear.png",
+  //   label: "Store",
+  //   description: "Represent the Trench.",
+  //   href: "/store",
+  // },
+  // {
+  //   icon: "/recruiting.png",
+  //   label: "Recruiting",
+  //   description: "Get in front of college coaches.",
+  //   href: "/recruiting",
+  // },
 ];
 
 const camps = [
@@ -80,18 +81,19 @@ export default function LightAlt() {
             >
               Register for a Camp
             </Link>
-            <Link
+            {/* Shop Gear CTA hidden until store launches */}
+            {/* <Link
               href="/store"
               className="font-bebas font-bold border-2 border-gold text-gold text-lg px-8 py-4 rounded hover:bg-gold/10 transition-colors uppercase tracking-wider"
             >
               Shop Gear
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>
 
-      {/* 3-Vertical Strip */}
-      <section className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* 3-Vertical Strip — store/recruiting hidden, only Academy renders for now */}
+      <section className="max-w-sm mx-auto px-6 py-16 grid grid-cols-1 gap-6">
         {verticals.map((v) => (
           <Link
             key={v.href}

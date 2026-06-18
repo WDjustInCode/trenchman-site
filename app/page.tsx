@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import HeroVideo from "@/components/HeroVideo";
 import TiltImage from "@/components/TiltImage";
@@ -13,18 +14,19 @@ const verticals = [
     description: "Position-specific training. Grades 3–12.",
     href: "/academy",
   },
-  {
-    icon: "/gear.png",
-    label: "Store",
-    description: "Represent the Trench.",
-    href: "/store",
-  },
-  {
-    icon: "/recruiting.png",
-    label: "Recruiting",
-    description: "Get in front of college coaches.",
-    href: "/recruiting",
-  },
+  // Hidden until store/recruiting launch — see CLAUDE.md planned integrations
+  // {
+  //   icon: "/gear.png",
+  //   label: "Store",
+  //   description: "Represent the Trench.",
+  //   href: "/store",
+  // },
+  // {
+  //   icon: "/recruiting.png",
+  //   label: "Recruiting",
+  //   description: "Get in front of college coaches.",
+  //   href: "/recruiting",
+  // },
 ];
 
 const testimonials = [
@@ -68,9 +70,7 @@ export default async function Home() {
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <HeroVideo />
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-<h1
-            className="font-rockwell text-5xl md:text-7xl lg:text-8xl font-bold uppercase leading-none mb-6 text-athletic-white"
-          >
+          <h1 className="font-rockwell text-5xl md:text-7xl lg:text-8xl font-bold uppercase leading-none mb-6 text-athletic-white">
             Built for the Athletes Who Fight in the{" "}
             <span className="text-gold">Trenches.</span>
           </h1>
@@ -86,21 +86,53 @@ export default async function Home() {
               className="font-bebas font-bold bg-gold text-deep-black text-lg px-8 py-4 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider leading-none inline-flex items-center justify-center"
               
             >
-              Register for a Camp
+              Register for Camp
             </Link>
-            <Link
+            {/* Shop Gear CTA hidden until store launches */}
+            {/* <Link
               href="/store"
               className="font-bebas font-bold border-2 border-gold text-gold text-lg px-8 py-4 rounded hover:bg-gold/10 transition-colors uppercase tracking-wider"
-              
             >
               Shop Gear
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>
 
-      {/* 3-Vertical Strip */}
-      <section className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* The Trenchman */}
+      <section className="relative w-full bg-deep-black overflow-hidden pt-16">
+        {/* Dark area above the image — title + copy, top-right */}
+        <div className="relative z-11 w-full flex items-center pl-[10%] pr-6 -mb-7 md:pr-16">
+          <div className="max-w-md">
+            <h2 className="font-novecento text-gold text-2xl md:text-4xl tracking-widest mb-3 uppercase">
+              The Trenchman
+            </h2>
+            <p className="text-athletic-white/80 text-sm md:text-base leading-relaxed mb-6">
+              A warrior of the line of scrimmage; one who battles for every inch with
+              toughness, intelligence, and unbreakable brotherhood.
+            </p>
+            <Link
+              href="#footer"
+              className="font-bebas font-bold bg-gold text-deep-black text-sm md:text-base px-6 py-3 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider leading-none inline-flex items-center justify-center"
+            >
+              Join the Brotherhood
+            </Link>
+          </div>
+        </div>
+
+        <div className="relative z-10 w-full">
+          <Image
+            src="/trenchman-definition-section-2.jpg"
+            alt="The Trenchman"
+            width={2064}
+            height={512}
+            className="w-full h-auto"
+          />
+        </div>
+      </section>
+
+      {/* 3-Vertical Strip — store/recruiting hidden, only Academy renders for now */}
+      {/* <section className="max-w-sm mx-auto px-6 py-16 grid grid-cols-1 gap-6">
         {verticals.map((v) => (
           <Link
             key={v.href}
@@ -119,7 +151,7 @@ export default async function Home() {
             <p className="text-gold text-sm">{v.description}</p>
           </Link>
         ))}
-      </section>
+      </section> */}
 
       {/* Testimonials */}
       <section className="bg-white/5 py-16 px-6">

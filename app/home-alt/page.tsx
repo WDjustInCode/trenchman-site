@@ -1,7 +1,6 @@
 import Link from "next/link";
 import HeroVideo from "@/components/HeroVideo";
 import TiltImage from "@/components/TiltImage";
-import AltNav from "@/components/AltNav";
 
 const verticals = [
   {
@@ -10,18 +9,19 @@ const verticals = [
     description: "Position-specific training. Grades 3–12.",
     href: "/academy",
   },
-  {
-    icon: "/gear.png",
-    label: "Store",
-    description: "Represent the Trench.",
-    href: "/store",
-  },
-  {
-    icon: "/recruiting.png",
-    label: "Recruiting",
-    description: "Get in front of college coaches.",
-    href: "/recruiting",
-  },
+  // Hidden until store/recruiting launch — see CLAUDE.md planned integrations
+  // {
+  //   icon: "/gear.png",
+  //   label: "Store",
+  //   description: "Represent the Trench.",
+  //   href: "/store",
+  // },
+  // {
+  //   icon: "/recruiting.png",
+  //   label: "Recruiting",
+  //   description: "Get in front of college coaches.",
+  //   href: "/recruiting",
+  // },
 ];
 
 const camps = [
@@ -53,9 +53,8 @@ const testimonials = [
 export default function HomeAlt() {
   return (
     <>
-      {/* Hero — full viewport, AltNav floats over it */}
+      {/* Hero — full viewport, sticky Nav from root layout sits above it */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <AltNav />
         <HeroVideo />
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <h1 className="font-rockwell text-5xl md:text-7xl lg:text-8xl font-bold uppercase leading-none mb-6 text-athletic-white">
@@ -72,18 +71,19 @@ export default function HomeAlt() {
             >
               Register for a Camp
             </Link>
-            <Link
+            {/* Shop Gear CTA hidden until store launches */}
+            {/* <Link
               href="/store"
               className="font-bebas font-bold border-2 border-gold text-gold text-lg px-8 py-4 rounded hover:bg-gold/10 transition-colors uppercase tracking-wider"
             >
               Shop Gear
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>
 
-      {/* 3-Vertical Strip */}
-      <section className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* 3-Vertical Strip — store/recruiting hidden, only Academy renders for now */}
+      <section className="max-w-sm mx-auto px-6 py-16 grid grid-cols-1 gap-6">
         {verticals.map((v) => (
           <Link
             key={v.href}
