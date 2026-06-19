@@ -131,6 +131,100 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* About Gallery */}
+      <section className="bg-white/5 py-26 px-6">
+        <div className="max-w-6xl mx-auto space-y-6">
+          <h2
+            className="font-novecento text-gold text-4xl tracking-widest text-center mb-12 uppercase"
+
+          >
+            About The Trenchman Academy
+          </h2>
+
+          {/* Our Mission */}
+          <div className="relative rounded-lg overflow-hidden shadow-xl shadow-black/50">
+            <Image
+              src="/about-1.png"
+              alt="Our Mission"
+              width={1440}
+              height={720}
+              className="w-full h-auto"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(to_top,_rgba(8,7,6,0.92)_0%,_rgba(8,7,6,0.92)_12%,_transparent_60%)] flex flex-col items-start justify-end text-left px-6 pb-8 md:px-16 md:pb-12">
+              <h2 className="font-novecento text-white text-2xl md:text-4xl tracking-widest mb-4 uppercase">
+                Our Mission
+              </h2>
+              <p className="text-white text-sm md:text-base leading-relaxed max-w-2xl">
+                In youth football, most offseason development is built around skill
+                positions. As a result, the athletes who line up at the line of
+                scrimmage often enter the season less prepared and lacking confidence
+                in their role. These are players asked to do some of the hardest, most
+                important work on the field—yet they&rsquo;re rarely given the time and
+                instruction to truly develop.
+              </p>
+              <p className="text-white text-sm md:text-base leading-relaxed mt-4">
+                That&rsquo;s why we built The Trenchman Academy&trade;.
+              </p>
+            </div>
+          </div>
+
+          {/* Founding Trenchmen + Core Values */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="relative rounded-lg overflow-hidden shadow-xl shadow-black/50">
+              <Image
+                src="/about-3.png"
+                alt="The Founding Trenchmen"
+                width={1376}
+                height={768}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(to_top,_rgba(8,7,6,0.92)_0%,_rgba(8,7,6,0.92)_12%,_transparent_60%)] flex flex-col items-start justify-end text-left px-6 pb-6">
+                <h2 className="font-novecento text-white text-xl md:text-2xl tracking-widest mb-4 uppercase">
+                  The Founding Trenchmen
+                </h2>
+                <p className="text-white text-sm leading-relaxed">
+                  Miles Murray is a 2003 graduate of Tivy High School and a 2007
+                  graduate of the U.S. Military Academy. Noah Oviedo is a 1992 graduate
+                  of Clark High School and a 1997 graduate of the U.S. Air Force
+                  Academy.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative rounded-lg overflow-hidden shadow-xl shadow-black/50">
+              <Image
+                src="/about-2.png"
+                alt="Core Values"
+                width={1376}
+                height={768}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(to_top,_rgba(8,7,6,0.92)_0%,_rgba(8,7,6,0.92)_12%,_transparent_60%)] flex flex-col items-start justify-end text-left px-6 pb-6">
+                <h2 className="font-novecento text-white text-xl md:text-2xl tracking-widest mb-4 uppercase">
+                  Core Values
+                </h2>
+                <p className="text-white text-sm leading-relaxed">
+                  <span className="font-bold">Fellowship</span> — players
+                  learn to trust the man next to them and take pride in working as one
+                  unit.
+                </p>
+                <p className="text-white text-sm leading-relaxed mt-3">
+                  <span className="font-bold">Faith</span> — we recognize
+                  that each athlete is created with purpose and called to use their
+                  gifts well, honoring God through their effort, discipline, and how
+                  they carry themselves on and off the field.
+                </p>
+                <p className="text-white text-sm leading-relaxed mt-3">
+                  <span className="font-bold">Fortitude</span> — we develop
+                  the mental and physical toughness required to compete, endure, and
+                  execute when it matters most.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 3-Vertical Strip — store/recruiting hidden, only Academy renders for now */}
       {/* <section className="max-w-sm mx-auto px-6 py-16 grid grid-cols-1 gap-6">
         {verticals.map((v) => (

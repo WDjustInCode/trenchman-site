@@ -81,6 +81,8 @@ The footer uses a two-column layout: `trenchman-logo.svg` (461×481px) on the le
 
 All card, section, and UI borders use gold (`border-gold`) at `border-2` thickness — no white/muted borders on structural elements. Section dividers (`border-y`) also use `border-gold`. Form inputs use `border-2 border-gold/40`. This matches the flyer aesthetic.
 
+Exception: the home page "About Gallery" section (`app/page.tsx`) uses borderless images with `shadow-xl shadow-black/50` instead — the photo-overlay treatment there reads better without a gold frame.
+
 ### TiltImage component
 
 `components/TiltImage.tsx` — 3D tilt-on-hover effect used for the 3-vertical strip icons. Accepts an optional `overlay` prop (default `true`) that controls the `bg-deep-black/20` overlay — pass `overlay={false}` on light-background pages.
