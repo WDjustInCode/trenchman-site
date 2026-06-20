@@ -17,6 +17,16 @@ function iconTransform(index: number, activeIndex: number) {
   return "translateY(40px)";
 }
 
+// First icon transitions out at half the scroll distance of the rest (was eating ~4 swipes before advancing).
+const FIRST_STAGE_FRACTION = 0.5;
+const WRAPPER_HEIGHT_VH = (traits.length + 1) * 100 - (1 - FIRST_STAGE_FRACTION) * 100;
+
+function getActiveIndex(progress: number) {
+  if (progress < FIRST_STAGE_FRACTION) return 0;
+  const adjusted = progress - FIRST_STAGE_FRACTION + 1;
+  return Math.min(traits.length - 1, Math.max(0, Math.floor(adjusted)));
+}
+
 export default function TrenchmanSection() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -28,8 +38,7 @@ export default function TrenchmanSection() {
 
       const rect = wrapper.getBoundingClientRect();
       const progress = -rect.top / window.innerHeight;
-      const index = Math.min(traits.length - 1, Math.max(0, Math.floor(progress)));
-      setActiveIndex(index);
+      setActiveIndex(getActiveIndex(progress));
     }
 
     handleScroll();
@@ -39,10 +48,10 @@ export default function TrenchmanSection() {
 
   return (
     <>
-      <div ref={wrapperRef} className="relative w-full" style={{ height: `${(traits.length + 1) * 100}vh` }}>
+      <div ref={wrapperRef} className="relative w-full" style={{ height: `${WRAPPER_HEIGHT_VH}vh` }}>
         <div className="sticky top-0 h-screen w-full bg-deep-black flex flex-col overflow-hidden">
           <div className="flex-1 flex md:items-end min-h-0">
-            <div className="max-w-6xl mx-auto w-full px-6 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-center sm:text-left">
+            <div className="max-w-6xl mx-auto w-full px-6 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-6 sm:gap-10 text-center sm:text-left">
               <div className="relative flex-shrink-0 w-[275px] h-[275px]">
                 {traits.map((trait, index) => (
                   <div
