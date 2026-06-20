@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import HeroVideo from "@/components/HeroVideo";
-import TiltImage from "@/components/TiltImage";
+import TrenchmanSection from "@/components/TrenchmanSection";
 import { getCollectionProducts } from "@/lib/shopify";
 import CampList, { type Camp } from "@/components/CampList";
 
@@ -100,38 +100,7 @@ export default async function Home() {
       </section>
 
       {/* The Trenchman */}
-      <section className="relative w-full bg-deep-black overflow-hidden pt-16">
-        {/* Dark area above the image — title + copy, top-right */}
-        <div className="relative z-11 w-full flex items-center pl-[10%] pr-6 md:-mb-7 md:pr-16">
-          <div className="max-w-md">
-            <h2 className="font-novecento text-gold text-4xl md:text-4xl tracking-widest mb-3 uppercase">
-              The Trenchman
-            </h2>
-            <p className="text-athletic-white/80 text-base md:text-base leading-relaxed mb-6">
-              A warrior of the line of scrimmage; one who battles for every inch with
-              toughness, intelligence, and unbreakable brotherhood.
-            </p>
-            <Link
-              href="#footer"
-              className="font-bebas font-bold bg-gold text-deep-black text-sm md:text-base px-6 py-3 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider leading-none inline-flex items-center justify-center"
-            >
-              Join the Brotherhood
-            </Link>
-          </div>
-        </div>
-
-        <div
-          className="relative z-10 w-full overflow-hidden"
-          style={{ height: "min(512px, 45vw)" }}
-        >
-          <Image
-            src="/trenchman-definition-section-2.jpg"
-            alt="The Trenchman"
-            fill
-            className="object-cover object-left"
-          />
-        </div>
-      </section>
+      <TrenchmanSection />
 
       {/* About Gallery */}
       <section className="bg-white/5 border-t-3 border-gold py-26 px-6">

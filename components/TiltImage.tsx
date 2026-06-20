@@ -3,7 +3,17 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 
-export default function TiltImage({ src, alt, overlay = true }: { src: string; alt: string; overlay?: boolean }) {
+export default function TiltImage({
+  src,
+  alt,
+  overlay = true,
+  size = 240,
+}: {
+  src: string;
+  alt: string;
+  overlay?: boolean;
+  size?: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState("");
 
@@ -29,7 +39,7 @@ export default function TiltImage({ src, alt, overlay = true }: { src: string; a
       className="inline-block"
     >
       <div className="relative inline-block">
-        <Image src={src} alt={alt} width={240} height={240} className="h-60 w-auto" />
+        <Image src={src} alt={alt} width={size} height={size} style={{ height: size, width: "auto" }} />
         {overlay && <div className="absolute inset-0 bg-deep-black/20 rounded" />}
       </div>
     </div>
