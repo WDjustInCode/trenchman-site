@@ -7,28 +7,6 @@ import CampList, { type Camp } from "@/components/CampList";
 
 export const dynamic = "force-dynamic";
 
-const verticals = [
-  {
-    icon: "/academy.png",
-    label: "Academy",
-    description: "Position-specific training. Grades 3–12.",
-    href: "/academy",
-  },
-  // Hidden until store/recruiting launch — see CLAUDE.md planned integrations
-  // {
-  //   icon: "/gear.png",
-  //   label: "Store",
-  //   description: "Represent the Trench.",
-  //   href: "/store",
-  // },
-  // {
-  //   icon: "/recruiting.png",
-  //   label: "Recruiting",
-  //   description: "Get in front of college coaches.",
-  //   href: "/recruiting",
-  // },
-];
-
 const testimonials = [
   {
     name: "Marcus T.",
@@ -75,7 +53,7 @@ export default async function Home() {
             <span className="text-gold">Trenches.</span>
           </h1>
           <p
-            className="font-bebas text-xl md:text-xl tracking-widest text-athletic-white/80 mb-10 uppercase"
+            className="font-bebas text-xl md:text-xl tracking-widest text-iron-grey mb-10 uppercase"
             
           >
             Grades 3–12 &bull; Position-Specific &bull; Real Coaching
@@ -106,7 +84,7 @@ export default async function Home() {
       <section className="bg-white/5 border-t-3 border-gold py-26 px-6">
         <div className="max-w-6xl mx-auto space-y-6">
           <h2
-            className="font-novecento text-gold text-4xl tracking-widest text-center mb-12 uppercase"
+            className="font-novecento text-gold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-widest text-center mb-12 uppercase"
 
           >
             The Trenchman Academy
@@ -122,10 +100,10 @@ export default async function Home() {
               className="object-cover"
             />
             <div className="absolute inset-0 bg-[linear-gradient(to_top,_rgba(8,7,6,0.92)_0%,_rgba(8,7,6,0.92)_30%,_transparent_70%)] sm:bg-[linear-gradient(to_top,_rgba(8,7,6,0.92)_0%,_rgba(8,7,6,0.92)_12%,_transparent_60%)] flex flex-col items-start justify-end text-left px-4 pb-5 sm:px-6 sm:pb-6">
-              <h2 className="font-novecento text-white text-2xl md:text-3xl lg:text-4xl tracking-widest mb-2 sm:mb-4 uppercase">
+              <h2 className="font-bebas text-white text-xl md:text-2xl lg:text-3xl tracking-widest mb-2 sm:mb-4 uppercase">
                 Our Mission
               </h2>
-              <p className="text-white text-base leading-snug sm:leading-relaxed max-w-2xl">
+              <p className="text-white text-sm sm:text-base leading-snug sm:leading-relaxed max-w-2xl">
                 In youth football, most offseason development is built around skill
                 positions. As a result, the athletes who line up at the line of
                 scrimmage often enter the season less prepared and lacking confidence
@@ -133,7 +111,7 @@ export default async function Home() {
                 important work on the field—yet they&rsquo;re rarely given the time and
                 instruction to truly develop.
               </p>
-              <p className="text-white text-base leading-snug sm:leading-relaxed mt-2 sm:mt-4">
+              <p className="text-white text-sm sm:text-base leading-snug sm:leading-relaxed mt-2 sm:mt-4">
                 That&rsquo;s why we built The Trenchman Academy&trade;.
               </p>
             </div>
@@ -150,10 +128,10 @@ export default async function Home() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-[linear-gradient(to_top,_rgba(8,7,6,0.92)_0%,_rgba(8,7,6,0.92)_30%,_transparent_70%)] sm:bg-[linear-gradient(to_top,_rgba(8,7,6,0.92)_0%,_rgba(8,7,6,0.92)_12%,_transparent_60%)] flex flex-col items-start justify-end text-left px-4 pb-5 sm:px-6 sm:pb-6">
-                <h2 className="font-novecento text-white text-2xl md:text-3xl lg:text-4xl tracking-widest mb-2 sm:mb-4 uppercase">
+                <h2 className="font-bebas text-white text-xl md:text-2xl lg:text-3xl tracking-widest mb-2 sm:mb-4 uppercase">
                   The Founding Trenchmen
                 </h2>
-                <p className="text-white text-base leading-snug sm:leading-relaxed">
+                <p className="text-white text-sm sm:text-base leading-snug sm:leading-relaxed">
                   Miles Murray is a 2003 graduate of Tivy High School and a 2007
                   graduate of the U.S. Military Academy. Noah Oviedo is a 1992 graduate
                   of Clark High School and a 1997 graduate of the U.S. Air Force
@@ -171,21 +149,21 @@ export default async function Home() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-[linear-gradient(to_top,_rgba(8,7,6,0.92)_0%,_rgba(8,7,6,0.92)_30%,_transparent_70%)] sm:bg-[linear-gradient(to_top,_rgba(8,7,6,0.92)_0%,_rgba(8,7,6,0.92)_12%,_transparent_60%)] flex flex-col items-start justify-end text-left px-4 pb-5 sm:px-6 sm:pb-6">
-                <h2 className="font-novecento text-white text-2xl md:text-3xl lg:text-4xl tracking-widest mb-2 sm:mb-4 uppercase">
+                <h2 className="font-bebas text-white text-xl md:text-2xl lg:text-3xl tracking-widest mb-2 sm:mb-4 uppercase">
                   Core Values
                 </h2>
-                <p className="text-white text-base leading-snug sm:leading-relaxed">
+                <p className="text-white text-sm sm:text-base leading-snug sm:leading-relaxed">
                   <span className="font-bold">Fellowship</span> — players
                   learn to trust the man next to them and take pride in working as one
                   unit.
                 </p>
-                <p className="text-white text-base leading-snug sm:leading-relaxed mt-1.5 sm:mt-3">
+                <p className="text-white text-sm sm:text-base leading-snug sm:leading-relaxed mt-1.5 sm:mt-3">
                   <span className="font-bold">Faith</span> — we recognize
                   that each athlete is created with purpose and called to use their
                   gifts well, honoring God through their effort, discipline, and how
                   they carry themselves on and off the field.
                 </p>
-                <p className="text-white text-base leading-snug sm:leading-relaxed mt-1.5 sm:mt-3">
+                <p className="text-white text-sm sm:text-base leading-snug sm:leading-relaxed mt-1.5 sm:mt-3">
                   <span className="font-bold">Fortitude</span> — we develop
                   the mental and physical toughness required to compete, endure, and
                   execute when it matters most.
@@ -200,7 +178,7 @@ export default async function Home() {
       <section className="bg-gold/10 border-y-3 border-gold py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <h2
-            className="font-novecento text-gold text-3xl sm:text-4xl tracking-widest text-center mb-10 uppercase whitespace-nowrap"
+            className="font-novecento text-gold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-widest text-center mb-10 uppercase sm:whitespace-nowrap"
 
           >
             ★&nbsp;&nbsp;Become a Trenchman&nbsp;&nbsp;★
@@ -218,33 +196,11 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* 3-Vertical Strip — store/recruiting hidden, only Academy renders for now */}
-      {/* <section className="max-w-sm mx-auto px-6 py-16 grid grid-cols-1 gap-6">
-        {verticals.map((v) => (
-          <Link
-            key={v.href}
-            href={v.href}
-            className="group rounded-lg p-8 hover:bg-gold/5 transition-all text-center"
-          >
-            <div className="mb-4 flex justify-center">
-              <TiltImage src={v.icon} alt={v.label} />
-            </div>
-            <p
-              className="font-novecento text-athletic-white/90 text-2xl tracking-widest mb-2 uppercase"
-              
-            >
-              {v.label}
-            </p>
-            <p className="text-gold text-sm">{v.description}</p>
-          </Link>
-        ))}
-      </section> */}
-
       {/* Testimonials */}
       <section className="bg-white/5 py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <h2
-            className="font-novecento text-gold text-4xl tracking-widest text-center mb-12 uppercase"
+            className="font-novecento text-gold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-widest text-center mb-12 uppercase"
             
           >
             From the Trenches

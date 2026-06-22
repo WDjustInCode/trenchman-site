@@ -40,7 +40,8 @@ export default function RootLayout({
               </div>
               <div className="flex flex-col gap-8 md:pt-4 pb-[25px] flex-1">
                 <div>
-                  <h2 className="font-novecento text-gold text-4xl tracking-widest uppercase">Built for the Athletes Who Fight in the Trenches.</h2>
+                  <h2 className="font-novecento text-gold text-4xl tracking-widest uppercase">Built for the Athletes Who Fight in the{" "}
+                  <span className="text-athletic-white">Trenches.</span></h2>
                 </div>
                 <div>
                   <p className="font-bebas text-gold tracking-widest mb-3">Join the Brotherhood</p>

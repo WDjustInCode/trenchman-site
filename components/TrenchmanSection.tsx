@@ -82,7 +82,7 @@ export default function TrenchmanSection() {
                     </span>
                   ))}
                 </div>
-                <h2 className="font-novecento text-gold text-4xl md:text-6xl tracking-widest mb-3 mt-1 uppercase">
+                <h2 className="font-novecento text-gold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-widest mb-3 mt-1 uppercase">
                   The Trenchman
                 </h2>
                 <p className="text-athletic-white/80 text-base md:text-base leading-relaxed mb-6">
