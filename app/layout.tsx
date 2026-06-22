@@ -30,12 +30,13 @@ export default function RootLayout({
         <ConditionalFooter>
           <footer id="footer" className="bg-deep-black py-12 px-6">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-end gap-10">
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 flex justify-center">
                 <Image
                   src="/trenchman-logo.svg"
                   alt="Trenchman Academy"
                   width={461}
                   height={481}
+                  className="h-auto md:w-[250px] lg:w-[361px]"
                 />
               </div>
               <div className="flex flex-col gap-8 md:pt-4 pb-[25px] flex-1">
