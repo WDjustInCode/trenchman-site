@@ -38,9 +38,8 @@ export default function TiltImage({
       style={{ transform, transition: transform ? "none" : "transform 0.5s ease" }}
       className="inline-block"
     >
-      <div className="relative inline-block">
+      <div className="relative inline-block drop-shadow-xl drop-shadow-black/50">
         <Image src={src} alt={alt} width={size} height={size} style={{ height: size, width: "auto" }} />
-        {overlay && <div className="absolute inset-0 bg-deep-black/20 rounded" />}
       </div>
     </div>
   );

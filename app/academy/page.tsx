@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AddToCartButton from "@/components/AddToCartButton";
 import CampList, { type Camp } from "@/components/CampList";
+import TiltImage from "@/components/TiltImage";
 import { getCollectionProducts } from "@/lib/shopify";
 
 export const dynamic = "force-dynamic";
@@ -15,12 +15,12 @@ export const metadata: Metadata = {
 
 const coaches = [
   {
-    name: "Coach D. Thompson",
+    name: "Coach M. Murray",
     role: "Head Trainer",
     background: "Former D-I OL, 8 years coaching at the high school and collegiate level",
   },
   {
-    name: "Coach M. Harris",
+    name: "Coach N. Oviedo",
     role: "OL Specialist",
     background: "Former D-II OL, certified strength & conditioning specialist",
   },
@@ -45,30 +45,6 @@ const faqs = [
   },
 ];
 
-const pricingTiers = [
-  {
-    tier: "General Admission",
-    price: "$150–175",
-    features: ["Full camp access", "Group instruction", "Coaching feedback", "Certificate of completion"],
-    highlight: false,
-    shopifyTitle: "General Admission",
-  },
-  {
-    tier: "Premium",
-    price: "$225–275",
-    features: ["Everything in General", "Individual highlight clip", "Video package included", "Priority drill placement"],
-    highlight: true,
-    shopifyTitle: "Premium",
-  },
-  {
-    tier: "Elite 1-on-1",
-    price: "$300–400",
-    features: ["Private 60-min session", "Personalized technique breakdown", "Film review with coach", "Recruiting guidance"],
-    highlight: false,
-    shopifyTitle: "Elite 1-on-1",
-  },
-];
-
 function getMeta(product: Awaited<ReturnType<typeof getCollectionProducts>>[number], key: string) {
   return product.metafields?.find((m) => m?.key === key)?.value ?? null;
 }
@@ -88,17 +64,6 @@ export default async function AcademyPage() {
     .filter((c) => c.date)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-  // Map Shopify products to pricing tier names (case-insensitive title match)
-  const variantByTier: Record<string, string> = {};
-  for (const product of ticketProducts) {
-    const match = pricingTiers.find(
-      (t) => t.shopifyTitle.toLowerCase() === product.title.toLowerCase()
-    );
-    if (match && product.variants.nodes[0]) {
-      variantByTier[match.tier] = product.variants.nodes[0].id;
-    }
-  }
-
   return (
     <>
       {/* Hero */}
@@ -110,7 +75,7 @@ export default async function AcademyPage() {
           <span className="text-gold">Trenches</span> Are Won
         </h1>
         <p
-          className="text-xl tracking-widest text-athletic-white/70 mb-10 uppercase"
+          className="font-bebas text-xl tracking-widest text-iron-grey mb-10 uppercase"
         >
           Position-Specific Lineman Camps &bull; Grades 3–12
         </p>
@@ -125,7 +90,7 @@ export default async function AcademyPage() {
       {/* How It Works */}
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2
-          className="font-novecento text-gold text-4xl tracking-widest mb-12 text-center uppercase"
+          className="font-novecento text-gold text-4xl lg:text-5xl tracking-widest mb-12 text-center uppercase"
         >
           How It Works
         </h2>
@@ -151,74 +116,39 @@ export default async function AcademyPage() {
       {/* Camp Schedule */}
       <section id="register" className="max-w-6xl mx-auto px-6 py-16">
         <h2
-          className="font-novecento text-gold text-4xl tracking-widest mb-10 uppercase"
+          className="font-novecento text-gold text-4xl lg:text-5xl tracking-widest text-center mb-10 uppercase"
         >
-          2025 Camp Schedule
+          2026 Camp Schedule
         </h2>
-        <CampList camps={camps} registerHref="#pricing" />
+        <CampList camps={camps} registerHref="/contact" />
       </section>
 
-      {/* Pricing Tiers */}
-      <section id="pricing" className="bg-white/5 py-16 px-6">
-        <div className="max-w-5xl mx-auto">
-          <h2
-            className="font-novecento text-gold text-4xl tracking-widest mb-10 text-center uppercase"
-          >
-            Pricing Tiers
+      {/* Solo & Group Training */}
+      <section className="bg-white/5 py-16 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-novecento text-gold text-center text-4xl lg:text-5xl tracking-widest mb-4 text-center uppercase">
+            Not Into Camps?
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {pricingTiers.map((t) => (
-              <div
-                key={t.tier}
-                className={`rounded-lg p-8 border flex flex-col gap-4 ${
-                  t.highlight
-                    ? "border-2 border-gold bg-gold/10"
-                    : "border-2 border-gold/40"
-                }`}
+          <p className="text-athletic-white/70 text-center max-w-2xl mx-auto mb-10">
+            Camps aren&apos;t the only way to train with us. Book a private session or bring a small group for focused, position-specific coaching.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              { icon: "/icon-solo.png", label: "Solo Training", copy: "One-on-one technique work, film review, and a training plan built around you." },
+              { icon: "/icon-group.png", label: "Group Training", copy: "Bring your squad — small-group sessions built for teammates training together." },
+            ].map((opt) => (
+              <Link
+                key={opt.label}
+                href="/contact"
+                className="group rounded-lg p-8 border-2 border-gold/40 hover:border-gold hover:bg-gold/5 transition-all flex flex-col items-center text-center gap-4"
               >
-                {t.highlight && (
-                  <span className="text-xs text-deep-black bg-gold px-3 py-1 rounded-full w-fit uppercase tracking-widest">
-                    Most Popular
-                  </span>
-                )}
-                <p className="text-gold text-2xl tracking-widest uppercase">
-                  {t.tier}
-                </p>
-                <p className="font-rockwell text-athletic-white text-4xl font-bold">
-                  {t.price}
-                </p>
-                <ul className="flex flex-col gap-2 mt-2">
-                  {t.features.map((f) => (
-                    <li key={f} className="text-athletic-white/70 text-sm flex gap-2">
-                      <span className="text-gold">✓</span> {f}
-                    </li>
-                  ))}
-                </ul>
-                {variantByTier[t.tier] ? (
-                  <div className="mt-auto">
-                    <AddToCartButton
-                      variantId={variantByTier[t.tier]}
-                      label={`Select ${t.tier}`}
-                      className={
-                        t.highlight
-                          ? "w-full bg-gold text-deep-black hover:bg-gold/80"
-                          : "w-full border-2 border-gold text-gold hover:bg-gold/10"
-                      }
-                    />
-                  </div>
-                ) : (
-                  <a
-                    href="#register"
-                    className={`font-bebas font-bold mt-auto text-center py-3 rounded uppercase tracking-wider text-sm transition-colors ${
-                      t.highlight
-                        ? "bg-gold text-deep-black hover:bg-gold/80"
-                        : "border-2 border-gold text-gold hover:bg-gold/10"
-                    }`}
-                  >
-                    Select {t.tier}
-                  </a>
-                )}
-              </div>
+                <TiltImage src={opt.icon} alt={opt.label} size={160} />
+                <p className="text-gold text-2xl tracking-widest uppercase">{opt.label}</p>
+                <p className="text-athletic-white/70 text-sm">{opt.copy}</p>
+                <span className="font-bebas font-bold mt-auto text-gold text-sm tracking-wider uppercase group-hover:underline">
+                  Contact Us →
+                </span>
+              </Link>
             ))}
           </div>
         </div>
@@ -227,7 +157,7 @@ export default async function AcademyPage() {
       {/* Coach Profiles */}
       <section className="max-w-5xl mx-auto px-6 py-16">
         <h2
-          className="font-novecento text-gold text-4xl tracking-widest mb-10 uppercase"
+          className="font-novecento text-gold text-center text-4xl lg:text-5xl tracking-widest mb-10 uppercase"
         >
           Your Coaches
         </h2>
@@ -269,18 +199,22 @@ export default async function AcademyPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 px-6 text-center">
-        <h2
-          className="font-novecento text-gold text-5xl tracking-widest mb-6 uppercase"
-        >
-          Ready to Work?
-        </h2>
-        <a
-          href="#register"
-          className="font-bebas font-bold inline-block bg-gold text-deep-black text-xl px-12 py-5 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
-        >
-          Secure Your Spot
-        </a>
+      <section className="bg-gold/10 border-y-3 border-gold py-16 px-6 text-center">
+        <div className="max-w-6xl mx-auto">
+          <h2
+            className="font-novecento text-gold text-4xl lg:text-5xl tracking-widest mb-10 uppercase flex items-center justify-center gap-3"
+          >
+            <span aria-hidden="true" className="flex-shrink-0">★</span>
+            <span className="max-w-[150px] sm:max-w-none">Ready to Work?</span>
+            <span aria-hidden="true" className="flex-shrink-0">★</span>
+          </h2>
+          <a
+            href="#register"
+            className="font-bebas font-bold inline-block bg-gold text-deep-black text-xl px-12 py-5 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
+          >
+            Secure Your Spot
+          </a>
+        </div>
       </section>
     </>
   );

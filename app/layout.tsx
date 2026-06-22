@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import "./globals.css";
 import { ConditionalNav, ConditionalFooter } from "@/components/ConditionalRootChrome";
+import FooterSignupForm from "@/components/FooterSignupForm";
 
 export const metadata: Metadata = {
   title: "Trenchman Academy — Built for the Athletes Who Fight in the Trenches",
@@ -30,13 +31,13 @@ export default function RootLayout({
         <ConditionalFooter>
           <footer id="footer" className="bg-deep-black py-12 px-6">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-end gap-10">
-              <div className="flex-shrink-0 flex justify-center">
+              <div className="flex-shrink-0 flex">
                 <Image
                   src="/trenchman-logo.svg"
                   alt="Trenchman Academy"
                   width={461}
                   height={481}
-                  className="h-auto md:w-[250px] lg:w-[361px]"
+                  className="h-auto md:w-[320px] lg:w-[400px]"
                 />
               </div>
               <div className="flex flex-col gap-8 md:pt-4 pb-[25px] flex-1">
@@ -49,24 +50,7 @@ export default function RootLayout({
                   <p className="text-athletic-white/70 text-sm mb-4">
                     Camp alerts, recruiting tips, and gear drops — straight to your inbox.
                   </p>
-                  <form className="flex flex-col sm:flex-row gap-2">
-                    <input
-                      type="text"
-                      placeholder="First name"
-                      className="bg-white/10 border-2 border-gold/40 rounded px-3 py-2 text-sm flex-1 text-athletic-white placeholder:text-white/40 focus:outline-none focus:border-gold"
-                    />
-                    <input
-                      type="email"
-                      placeholder="Email address"
-                      className="bg-white/10 border-2 border-gold/40 rounded px-3 py-2 text-sm flex-1 text-athletic-white placeholder:text-white/40 focus:outline-none focus:border-gold"
-                    />
-                    <button
-                      type="submit"
-                      className="font-bebas font-bold bg-gold text-deep-black text-sm px-4 py-2 rounded hover:bg-gold/80 transition-colors uppercase tracking-wider"
-                    >
-                      Join
-                    </button>
-                  </form>
+                  <FooterSignupForm />
                 </div>
                 <div>
                   <p className="font-bebas text-gold tracking-widest mb-3">Follow Us</p>

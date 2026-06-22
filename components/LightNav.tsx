@@ -13,9 +13,6 @@ const homeLinks = [
 
 const links = [
   { label: "Academy", href: "/academy" },
-  // { label: "Store", href: "/store" }, // hidden: re-enable when store launches
-  // { label: "Recruiting", href: "/recruiting" }, // hidden: re-enable when recruiting launches
-  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
