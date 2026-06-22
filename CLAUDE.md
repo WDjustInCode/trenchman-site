@@ -46,6 +46,7 @@ Each route corresponds to one of the three business verticals:
 | `/store` | Merch & gear | Add to cart (Shopify — wired via Storefront API) |
 | `/recruiting` | Recruiting exposure | Add $75 highlight reel upsell at checkout |
 | `/about` | Brand story | Trust-building; no direct conversion CTA |
+| `/contact` | All three | General inquiry form (Resend) |
 
 ### Home page variants (design exploration)
 
@@ -69,7 +70,7 @@ The alt pages render their own nav inline and are excluded from the root layout'
 | `components/AltNav.tsx` | `/home-alt` | Absolute, gradient dark→transparent, gold logomark `h-14` |
 | `components/LightAltNav.tsx` | `/light-alt` | Absolute, gradient white→transparent, black logomark `h-14` |
 
-All four navs share the same Home dropdown (`homeLinks` array) — keep them in sync when adding variants. The dropdown uses a transparent bridge `<div>` (`h-2`) between the trigger and panel to prevent `onMouseLeave` from firing during mouse transit.
+All four navs share the same Home dropdown (`homeLinks` array) and main `links` array (`Academy`, `About`, `Contact`) — keep them in sync when adding variants or routes. The dropdown uses a transparent bridge `<div>` (`h-2`) between the trigger and panel to prevent `onMouseLeave` from firing during mouse transit.
 
 ### Shared layout
 
@@ -121,8 +122,17 @@ Both `/store` and `/academy` use `export const dynamic = "force-dynamic"` to pre
 
 **Shopify publishing requirement:** products must be published to the "Online Store" sales channel in the Shopify admin to be returned by the Storefront API. Draft products or products with the sales channel unchecked will not appear.
 
+### Resend integration (contact form)
+
+`app/contact/actions.ts` — Server Action (`sendContactMessage`) that sends contact form submissions via the `resend` npm package.
+
+- **API key:** `RESEND_API_KEY` (server-only, not `NEXT_PUBLIC_*` — read in the Server Action, never sent to the client)
+- **Sender:** currently `onboarding@resend.dev` (Resend's sandbox sender — no custom domain verified yet). Swap to a verified domain address once one is set up in the Resend dashboard.
+- **Recipient:** hardcoded to a single inbox in `actions.ts`; the submitter's email is set as `replyTo`.
+- `app/contact/ContactForm.tsx` — client component wrapping the form; tracks `idle`/`pending`/`success`/`error` state locally and resets the form on success.
+
 ### Planned integrations (not yet implemented)
 
 - **Camp registration:** RegFox or Jack Athletic embed on `/academy#register` (currently uses Shopify `camp-tickets` collection as a placeholder)
-- **Email:** Klaviyo — forms on Home, footer, and `/store` waitlist need Server Actions wired to Klaviyo's API
+- **Email:** Klaviyo — forms on Home, footer, and `/store` waitlist need Server Actions wired to Klaviyo's API (the `/contact` form uses Resend instead, see above)
 - **CMS:** Sanity or Notion-as-CMS for the camp schedule (currently hardcoded arrays in each page file)
