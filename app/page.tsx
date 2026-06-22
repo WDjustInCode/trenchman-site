@@ -81,10 +81,10 @@ export default async function Home() {
       <TrenchmanSection />
 
       {/* About Gallery */}
-      <section className="bg-white/5 border-t-3 border-gold py-26 px-6">
+      <section className="bg-white/5 border-t-3 border-gold py-16 px-6">
         <div className="max-w-6xl mx-auto space-y-6">
           <h2
-            className="font-novecento text-gold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-widest text-center mb-12 uppercase"
+            className="font-novecento text-gold text-4xl lg:text-5xl tracking-widest text-center mb-12 uppercase"
 
           >
             The Trenchman Academy
@@ -178,10 +178,12 @@ export default async function Home() {
       <section className="bg-gold/10 border-y-3 border-gold py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <h2
-            className="font-novecento text-gold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-widest text-center mb-10 uppercase sm:whitespace-nowrap"
+            className="font-novecento text-gold text-4xl lg:text-5xl tracking-widest text-center mb-10 uppercase flex items-center justify-center gap-3"
 
           >
-            ★&nbsp;&nbsp;Become a Trenchman&nbsp;&nbsp;★
+            <span aria-hidden="true" className="flex-shrink-0">★</span>
+            <span className="max-w-[210px] sm:max-w-none">Become a Trenchman</span>
+            <span aria-hidden="true" className="flex-shrink-0">★</span>
           </h2>
           <CampList camps={camps} registerHref="/academy#register" />
           <div className="mt-6 text-center">
@@ -200,7 +202,7 @@ export default async function Home() {
       <section className="bg-white/5 py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <h2
-            className="font-novecento text-gold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-widest text-center mb-12 uppercase"
+            className="font-novecento text-gold text-4xl lg:text-5xl tracking-widest text-center mb-12 uppercase"
             
           >
             From the Trenches

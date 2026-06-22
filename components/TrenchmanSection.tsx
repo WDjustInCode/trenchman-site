@@ -51,7 +51,7 @@ export default function TrenchmanSection() {
       <div ref={wrapperRef} className="relative w-full" style={{ height: `${WRAPPER_HEIGHT_VH}vh` }}>
         <div className="sticky top-0 h-screen w-full bg-deep-black flex flex-col overflow-hidden">
           <div className="flex-1 flex md:items-end min-h-0">
-            <div className="max-w-6xl mx-auto w-full px-6 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-6 sm:gap-10 text-center sm:text-left">
+            <div className="max-w-6xl mx-auto w-full px-6 flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-6 sm:gap-10 text-center sm:text-left">
               <div className="relative flex-shrink-0 w-[275px] h-[275px]">
                 {traits.map((trait, index) => (
                   <div
@@ -82,7 +82,7 @@ export default function TrenchmanSection() {
                     </span>
                   ))}
                 </div>
-                <h2 className="font-novecento text-gold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-widest mb-3 mt-1 uppercase">
+                <h2 className="font-novecento text-gold text-4xl md:text-5xl tracking-widest mb-3 mt-1 uppercase">
                   The Trenchman
                 </h2>
                 <p className="text-athletic-white/80 text-base md:text-base leading-relaxed mb-6">
