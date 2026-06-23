@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import CampList, { type Camp } from "@/components/CampList";
 import TiltImage from "@/components/TiltImage";
@@ -18,11 +19,13 @@ const coaches = [
     name: "Coach M. Murray",
     role: "Head Trainer",
     background: "Former D-I OL, 8 years coaching at the high school and collegiate level",
+    image: "/miles.jpg",
   },
   {
     name: "Coach N. Oviedo",
     role: "OL Specialist",
     background: "Former D-II OL, certified strength & conditioning specialist",
+    image: "/noah.jpg",
   },
 ];
 
@@ -169,8 +172,13 @@ export default async function AcademyPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {coaches.map((c) => (
               <div key={c.name} className="border-2 border-gold/40 rounded-lg p-8 flex gap-6">
-                <div className="w-16 h-16 rounded-full bg-gold/20 border-2 border-gold/60 flex-shrink-0 flex items-center justify-center text-2xl">
-                  🏈
+                <div className="relative w-24 self-stretch rounded-lg border-2 border-gold/60 flex-shrink-0 overflow-hidden">
+                  <Image
+                    src={c.image}
+                    alt={c.name}
+                    fill
+                    className="object-cover scale-150"
+                  />
                 </div>
                 <div>
                   <p className="text-athletic-white font-bold text-lg">{c.name}</p>

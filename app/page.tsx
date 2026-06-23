@@ -74,9 +74,9 @@ export default async function Home() {
                     </h2>
 
                     {/* Our Mission */}
-                    <div className="relative rounded-lg overflow-hidden shadow-xl shadow-black/50 aspect-[3/4] sm:aspect-[4/4] md:aspect-[4/3] lg:aspect-[5/2] xl:aspect-[8/3]">
+                    <div className="relative rounded-lg overflow-hidden shadow-xl shadow-black/50 aspect-[3/4] sm:aspect-[5/3] md:aspect-[6/3] lg:aspect-[5/2] xl:aspect-[8/3]">
                         <Image
-                        src="/about-1.png"
+                        src="/about-a.jpg"
                         alt="Our Mission"
                         fill
                         sizes="(min-width: 768px) 1152px, 100vw"

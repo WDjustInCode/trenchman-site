@@ -101,7 +101,7 @@ export default function TrenchmanSection() {
 
           <div className="relative w-full flex-shrink-0 overflow-hidden" style={{ height: "min(512px, 45vw)" }}>
             <Image
-              src="/trenchman-definition-section-2.jpg"
+              src="/trenchman-definition-section-3.jpg"
               alt="The Trenchman"
               fill
               className="object-cover object-left"
