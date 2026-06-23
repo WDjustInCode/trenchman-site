@@ -131,6 +131,18 @@ Both `/store` and `/academy` use `export const dynamic = "force-dynamic"` to pre
 - **Recipient:** hardcoded to a single inbox in `actions.ts`; the submitter's email is set as `replyTo`.
 - `app/contact/ContactForm.tsx` — client component wrapping the form; tracks `idle`/`pending`/`success`/`error` state locally and resets the form on success.
 
+### Training pricing (academy page)
+
+The `/academy` page displays three training options with tiered pricing:
+
+| Option | Price | Details |
+|--------|-------|---------|
+| Camp Registration | $75 | Product-driven via Shopify `camp-tickets` collection |
+| Solo Training | $75 | 1-hour 1-on-1 session; premium per-person rate |
+| Group Training | $200 | Up to 6 athletes, 4-hour session; ~$33.33/person/hour |
+
+Both solo and group training cards link to `/contact` (contact form). Pricing is hardcoded in `app/academy/page.tsx` and should be updated in the component data array if rates change.
+
 ### Planned integrations (not yet implemented)
 
 - **Camp registration:** RegFox or Jack Athletic embed on `/academy#register` (currently uses Shopify `camp-tickets` collection as a placeholder)

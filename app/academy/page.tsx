@@ -67,9 +67,9 @@ export default async function AcademyPage() {
   return (
     <>
       {/* Hero */}
-      <section className="py-24 px-6 text-center bg-gradient-to-b from-gold/10 to-transparent">
+      <section className="py-26 px-6 text-center bg-gradient-to-b from-gold/10 to-transparent">
         <h1
-          className="font-rockwell text-5xl md:text-7xl text-athletic-white uppercase leading-none mb-4"
+          className="font-rockwell max-w-6xl mx-auto text-5xl md:text-7xl text-athletic-white uppercase leading-none mb-4"
         >
           Train Where the{" "}
           <span className="text-gold">Trenches</span> Are Won
@@ -125,7 +125,7 @@ export default async function AcademyPage() {
 
       {/* Solo & Group Training */}
       <section className="bg-white/5 py-16 px-6">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="font-novecento text-gold text-center text-4xl lg:text-5xl tracking-widest mb-4 text-center uppercase">
             Not Into Camps?
           </h2>
@@ -134,8 +134,8 @@ export default async function AcademyPage() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { icon: "/icon-solo.png", label: "Solo Training", copy: "One-on-one technique work, film review, and a training plan built around you." },
-              { icon: "/icon-group.png", label: "Group Training", copy: "Bring your squad — small-group sessions built for teammates training together." },
+              { icon: "/icon-solo.png", label: "Solo Training", copy: "One-on-one technique work, film review, and a training plan built around you.", pricing: "$75", detail: "per 1-hour session" },
+              { icon: "/icon-group.png", label: "Group Training", copy: "Bring your squad — small-group sessions built for teammates training together.", pricing: "$200", detail: "up to 6 athletes, 4 hours" },
             ].map((opt) => (
               <Link
                 key={opt.label}
@@ -145,7 +145,11 @@ export default async function AcademyPage() {
                 <TiltImage src={opt.icon} alt={opt.label} size={160} />
                 <p className="text-gold text-2xl tracking-widest uppercase">{opt.label}</p>
                 <p className="text-athletic-white/70 text-sm">{opt.copy}</p>
-                <span className="font-bebas font-bold mt-auto text-gold text-sm tracking-wider uppercase group-hover:underline">
+                <div className="mt-auto pt-4 border-t border-gold/30 w-full">
+                  <p className="text-gold text-3xl font-bold">{opt.pricing}</p>
+                  <p className="text-athletic-white/60 text-xs mt-1">{opt.detail}</p>
+                </div>
+                <span className="font-bebas font-bold text-gold text-sm tracking-wider uppercase group-hover:underline">
                   Contact Us →
                 </span>
               </Link>
@@ -155,27 +159,29 @@ export default async function AcademyPage() {
       </section>
 
       {/* Coach Profiles */}
-      <section className="max-w-5xl mx-auto px-6 py-16">
-        <h2
-          className="font-novecento text-gold text-center text-4xl lg:text-5xl tracking-widest mb-10 uppercase"
-        >
-          Your Coaches
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {coaches.map((c) => (
-            <div key={c.name} className="border-2 border-gold/40 rounded-lg p-8 flex gap-6">
-              <div className="w-16 h-16 rounded-full bg-gold/20 border-2 border-gold/60 flex-shrink-0 flex items-center justify-center text-2xl">
-                🏈
+      <section className="px-6 py-16">
+        <div className="max-w-5xl mx-auto">
+          <h2
+            className="font-novecento text-gold text-center text-4xl lg:text-5xl tracking-widest mb-10 uppercase"
+          >
+            Your Coaches
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {coaches.map((c) => (
+              <div key={c.name} className="border-2 border-gold/40 rounded-lg p-8 flex gap-6">
+                <div className="w-16 h-16 rounded-full bg-gold/20 border-2 border-gold/60 flex-shrink-0 flex items-center justify-center text-2xl">
+                  🏈
+                </div>
+                <div>
+                  <p className="text-athletic-white font-bold text-lg">{c.name}</p>
+                  <p className="text-gold text-sm tracking-widest mb-2 uppercase">
+                    {c.role}
+                  </p>
+                  <p className="text-athletic-white/60 text-sm">{c.background}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-athletic-white font-bold text-lg">{c.name}</p>
-                <p className="text-gold text-sm tracking-widest mb-2 uppercase">
-                  {c.role}
-                </p>
-                <p className="text-athletic-white/60 text-sm">{c.background}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
