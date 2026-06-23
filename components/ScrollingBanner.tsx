@@ -32,7 +32,7 @@ export default function ScrollingBanner() {
             <span className="font-bebas text-deep-black text-lg tracking-widest uppercase">
               {word}
             </span>
-            <span className="text-deep-black text-xl leading-none flex-shrink-0">•</span>
+            <span className="text-deep-black text-xl leading-none flex-shrink-0" style={{ marginRight: "75px" }}>•</span>
           </span>
         ))}
       </div>
