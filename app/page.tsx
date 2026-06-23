@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import HeroVideo from "@/components/HeroVideo";
 import TrenchmanSection from "@/components/TrenchmanSection";
+import ScrollingBanner from "@/components/ScrollingBanner";
 import { getCollectionProducts } from "@/lib/shopify";
 import CampList, { type Camp } from "@/components/CampList";
 
@@ -60,6 +61,8 @@ export default async function Home() {
             {/* The Trenchman */}
             <TrenchmanSection />
 
+            <ScrollingBanner />
+
             {/* About Gallery */}
             <section className="bg-white/5 border-t-3 border-gold py-16 lg:py-24 px-6">
                 <div className="max-w-6xl mx-auto space-y-6">
@@ -71,7 +74,7 @@ export default async function Home() {
                     </h2>
 
                     {/* Our Mission */}
-                    <div className="relative rounded-lg overflow-hidden shadow-xl shadow-black/50 aspect-[3/4] sm:aspect-[4/4] md:aspect-[4/3]">
+                    <div className="relative rounded-lg overflow-hidden shadow-xl shadow-black/50 aspect-[3/4] sm:aspect-[4/4] md:aspect-[4/3] lg:aspect-[5/2] xl:aspect-[8/3]">
                         <Image
                         src="/about-1.png"
                         alt="Our Mission"
@@ -83,7 +86,7 @@ export default async function Home() {
                             <h2 className="font-bebas text-athletic-white text-xl md:text-2xl lg:text-3xl tracking-widest mb-2 sm:mb-4 uppercase">
                                 Our Mission
                             </h2>
-                            <p className="text-athletic-white text-sm sm:text-base leading-snug sm:leading-relaxed max-w-2xl">
+                            <p className="text-athletic-white text-sm sm:text-base leading-snug sm:leading-relaxed max-w-4xl">
                                 In youth football, most offseason development is built around skill
                                 positions. As a result, the athletes who line up at the line of
                                 scrimmage often enter the season less prepared and lacking confidence
@@ -99,7 +102,7 @@ export default async function Home() {
 
                     {/* Founding Trenchmen + Core Values */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div className="relative rounded-lg overflow-hidden shadow-xl shadow-black/50 aspect-[3/4] sm:aspect-[4/4] md:aspect-[16/10] lg:aspect-[4/4]">
+                        <div className="relative rounded-lg overflow-hidden shadow-xl shadow-black/50 aspect-[3/4] sm:aspect-[4/4] md:aspect-[16/10] lg:aspect-[4/4] xl:aspect-[6/4]">
                             <Image
                                 src="/about-2.png"
                                 alt="Core Values"
@@ -129,7 +132,7 @@ export default async function Home() {
                                 </p>
                             </div>
                         </div>
-                        <div className="relative rounded-lg overflow-hidden shadow-xl shadow-black/50 aspect-[4/4] sm:aspect-[5/3] md:aspect-[16/8] lg:aspect-[4/4]">
+                        <div className="relative rounded-lg overflow-hidden shadow-xl shadow-black/50 aspect-[4/4] sm:aspect-[5/3] md:aspect-[16/8] lg:aspect-[4/4] xl:aspect-[6/4]">
                             <Image
                                 src="/about-3.png"
                                 alt="The Founding Trenchmen"
@@ -188,7 +191,7 @@ export default async function Home() {
             <section className="bg-white/5 py-16 lg:py-24 px-6">
             <div className="max-w-6xl mx-auto">
                 <h2 className="font-novecento text-gold text-4xl lg:text-5xl tracking-widest ml-0 mb-8 uppercase">
-                    Why A Trenchman?
+                    Why Trenchman?
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {[
