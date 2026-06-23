@@ -47,9 +47,9 @@ export default function RootLayout({
                 </div>
                 <div>
                   <p className="font-bebas text-gold tracking-widest mb-3">Join the Brotherhood</p>
-                  <p className="text-athletic-white/70 text-sm mb-4">
+                  {/* <p className="text-athletic-white/70 text-sm mb-4">
                     Camp alerts, recruiting tips, and gear drops — straight to your inbox.
-                  </p>
+                  </p> */}
                   <FooterSignupForm />
                 </div>
                 <div>

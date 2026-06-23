@@ -64,7 +64,7 @@ export default async function Home() {
             <ScrollingBanner />
 
             {/* About Gallery */}
-            <section className="bg-white/5 border-t-3 border-gold py-16 lg:py-24 px-6">
+            <section className="bg-white/5 py-16 lg:py-24 px-6">
                 <div className="max-w-6xl mx-auto space-y-6">
                     <h2
                         className="font-novecento text-gold text-4xl lg:text-5xl tracking-widest mb-12 uppercase"

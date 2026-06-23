@@ -67,12 +67,12 @@ export default async function AcademyPage() {
   return (
     <>
       {/* Hero */}
-      <section className="py-26 px-6 text-center bg-gradient-to-b from-gold/10 to-transparent">
+      <section className="pb-26 pt-46 px-6 text-center bg-gradient-to-b from-gold/10 to-transparent">
         <h1
-          className="font-rockwell max-w-6xl mx-auto text-5xl md:text-7xl text-athletic-white uppercase leading-none mb-4"
+          className="font-rockwell max-w-6xl mx-auto text-5xl md:text-7xl text-gold uppercase leading-none mb-4"
         >
           Train Where the{" "}
-          <span className="text-gold">Trenches</span> Are Won
+          <span className="text-athletic-white">Trenches</span> Are Won
         </h1>
         <p
           className="font-bebas text-xl tracking-widest text-iron-grey mb-10 uppercase"
@@ -134,7 +134,7 @@ export default async function AcademyPage() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { icon: "/icon-solo.png", label: "Solo Training", copy: "One-on-one technique work, film review, and a training plan built around you.", pricing: "$75", detail: "per 1-hour session" },
+              { icon: "/icon-solo.png", label: "Solo Training", copy: "One-on-one technique work, film review, and a training plan built around you.", pricing: "$100", detail: "per 1-hour session" },
               { icon: "/icon-group.png", label: "Group Training", copy: "Bring your squad — small-group sessions built for teammates training together.", pricing: "$200", detail: "up to 6 athletes, 4 hours" },
             ].map((opt) => (
               <Link
