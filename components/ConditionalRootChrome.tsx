@@ -7,7 +7,7 @@ import AltNav from "@/components/AltNav";
 export function ConditionalNav() {
   const pathname = usePathname();
   if (pathname === "/light" || pathname === "/light-alt") return null;
-  if (pathname === "/") return <AltNav />;
+  if (pathname === "/" || pathname === "/academy" || pathname === "/contact") return <AltNav />;
   return <Nav />;
 }
 
