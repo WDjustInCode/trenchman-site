@@ -50,8 +50,8 @@ export default function TrenchmanSection() {
     <>
       <div ref={wrapperRef} className="relative w-full" style={{ height: `${WRAPPER_HEIGHT_VH}vh` }}>
         <div className="sticky top-0 h-screen w-full bg-deep-black flex flex-col overflow-hidden">
-          <div className="flex-1 flex md:items-end min-h-0">
-            <div className="max-w-6xl mx-auto w-full px-6 flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-6 sm:gap-10 text-center sm:text-left">
+          <div className="flex-1 flex md:items-end min-h-0 pt-4 sm:pt-0 z-10">
+            <div className="max-w-6xl mx-auto w-full px-6 flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-2 sm:gap-10 text-center sm:text-left">
               <div className="relative flex-shrink-0 w-[275px] h-[275px]">
                 {traits.map((trait, index) => (
                   <div
@@ -82,10 +82,10 @@ export default function TrenchmanSection() {
                     </span>
                   ))}
                 </div>
-                <h2 className="font-novecento text-gold text-4xl md:text-5xl tracking-widest mb-3 mt-1 uppercase">
+                <h2 className="font-novecento text-gold text-4xl md:text-5xl tracking-widest mb-2 sm:mb-3 sm:mt-1 uppercase">
                   The Trenchman
                 </h2>
-                <p className="text-athletic-white/80 text-base md:text-base leading-relaxed mb-6">
+                <p className="text-athletic-white/80 text-base md:text-base leading-relaxed mb-4 sm:mb-6">
                   A warrior of the line of scrimmage; one who battles for every inch with
                   toughness, intelligence, and unbreakable brotherhood.
                 </p>
