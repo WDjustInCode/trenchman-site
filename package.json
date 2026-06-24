@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@shopify/storefront-api-client": "^1.0.10",
+    "@supabase/supabase-js": "^2.108.2",
     "next": "15.5.18",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

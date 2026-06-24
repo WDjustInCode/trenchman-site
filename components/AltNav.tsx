@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import ProfileMenu, { type NavProfile } from "@/components/ProfileMenu";
 
 const homeLinks = [
   { label: "Dark", href: "/" },
@@ -16,7 +17,7 @@ const links = [
   { label: "Contact", href: "/contact" },
 ];
 
-export default function AltNav() {
+export default function AltNav({ profile }: { profile: NavProfile | null }) {
   const [open, setOpen] = useState(false);
   const [homeOpen, setHomeOpen] = useState(false);
 
@@ -84,6 +85,7 @@ export default function AltNav() {
           >
             REGISTER
           </Link>
+          <ProfileMenu profile={profile} theme="dark" variant="desktop" />
         </div>
 
         {/* Mobile hamburger */}
@@ -135,6 +137,7 @@ export default function AltNav() {
           >
             Register Now
           </Link>
+          <ProfileMenu profile={profile} theme="dark" variant="mobile" onNavigate={() => setOpen(false)} />
         </div>
       )}
     </nav>

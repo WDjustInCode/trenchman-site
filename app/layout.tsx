@@ -3,6 +3,7 @@ import Image from "next/image";
 import "./globals.css";
 import { ConditionalNav, ConditionalFooter } from "@/components/ConditionalRootChrome";
 import FooterSignupForm from "@/components/FooterSignupForm";
+import { getCurrentProfile } from "@/lib/session";
 
 export const metadata: Metadata = {
   title: "Trenchman Academy — Built for the Athletes Who Fight in the Trenches",
@@ -15,18 +16,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const profile = await getCurrentProfile();
+
   return (
     <html lang="en">
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/ijs2uww.css" />
       </head>
       <body>
-        <ConditionalNav />
+        <ConditionalNav profile={profile} />
         <main>{children}</main>
         <ConditionalFooter>
           <footer id="footer" className="bg-deep-black py-12 px-6">

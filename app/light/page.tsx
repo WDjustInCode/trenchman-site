@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import TiltImage from "@/components/TiltImage";
 import LightNav from "@/components/LightNav";
+import { getCurrentProfile } from "@/lib/session";
 
 const verticals = [
   {
@@ -51,10 +52,12 @@ const testimonials = [
   },
 ];
 
-export default function LightHome() {
+export default async function LightHome() {
+  const profile = await getCurrentProfile();
+
   return (
     <div className="bg-[#F4F1EC] min-h-screen text-deep-black">
-      <LightNav />
+      <LightNav profile={profile} />
 
       {/* Hero */}
       <section className="relative bg-[#ECEAE4] border-b-2 border-gold/30 py-28 px-6 overflow-hidden">

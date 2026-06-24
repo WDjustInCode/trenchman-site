@@ -72,6 +72,8 @@ The alt pages render their own nav inline and are excluded from the root layout'
 
 All four navs share the same Home dropdown (`homeLinks` array) and main `links` array (`Academy`, `About`, `Contact`) — keep them in sync when adding variants or routes. The dropdown uses a transparent bridge `<div>` (`h-2`) between the trigger and panel to prevent `onMouseLeave` from firing during mouse transit.
 
+Each nav also renders `components/ProfileMenu.tsx` (desktop + mobile variants) for athlete sign-in state — see "Athlete profile system" below. Unlike `links`/`homeLinks`, this is **not** duplicated per-nav: all 4 navs import the same component and pass it a `profile` prop and a `theme` ("dark" | "light"), because the profile menu needs live per-request session data (not just a static link array), so quadruplicating it would risk drifting cookie/session logic across files.
+
 ### Shared layout
 
 `app/layout.tsx` renders `ConditionalNav` and `ConditionalFooter` (both from `components/ConditionalRootChrome.tsx`), which suppress the root chrome on pages that manage their own nav/footer. The footer email form is currently unconnected — it needs a Klaviyo/Mailchimp POST endpoint added as a Server Action or API route.
@@ -142,6 +144,26 @@ The `/academy` page displays three training options with tiered pricing:
 | Group Training | $200 | Up to 6 athletes, 4-hour session; ~$33.33/person/hour |
 
 Both solo and group training cards link to `/contact` (contact form). Pricing is hardcoded in `app/academy/page.tsx` and should be updated in the component data array if rates change.
+
+### Athlete profile system
+
+Athletes can create a lightweight profile to track training progress across the three verticals (camp, group, solo). This system is **intentionally not secure** — no real PII is collected, and that's a deliberate tradeoff, not an oversight:
+
+- **Identity:** first initial + last initial + last 4 digits of phone number — nothing else. No names, emails, or birthdates are collected (a fuller schema was considered and rejected specifically to avoid COPPA's parental-consent/security obligations, since many athletes are minors under 13).
+- **Sign up / sign in:** `app/sign-up/` and `app/sign-in/` (Server Actions in each `actions.ts`). Duplicate initials+phone combos are allowed by design — if sign-in matches more than one profile, `SignInForm.tsx` renders a disambiguation picker (non-identifying info only: join date, training types) so the athlete can pick the right one.
+- **Session:** `lib/session.ts` (`getCurrentProfile`, `setProfileCookie`) + `lib/sessionActions.ts` (`signOut`, kept in a separate `"use server"` file so the function can be imported into the client `ProfileMenu` component without pulling `next/headers` into the client bundle). The session is an **unsigned HttpOnly cookie holding the profile's id directly** — no sessions table. A forged cookie could let someone view another athlete's read-only training history, which is accepted because members never get write access and there's no PII to expose.
+- **Profile page:** `app/profile/page.tsx` — redirects to `/sign-in` if there's no valid session; shows session counts per training type plus a `TrainingSessionList`.
+- **Database:** Supabase Postgres, connected via the Vercel Storage integration (project `supabase-almond-curtain`). Schema lives in `supabase/schema.sql` (run manually in the Supabase SQL editor — there's no migration tooling). `lib/supabase.ts` is a single **service-role** client (mirrors `lib/shopify.ts`'s pattern of one module-level client + exported typed functions). There's no anon client and no client-side Supabase usage — all access goes through Server Components/Actions, and the cookie check in each route *is* the authorization boundary. Supabase RLS is left default-deny and is effectively bypassed by the service-role key; this is consistent with the already-accepted insecure-auth model, not an oversight.
+- **Env vars:** `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` (server-only). Set in `.env.local` for local dev and on Vercel (Production/Preview/Development) for deployments. Note: the Vercel↔Supabase integration's automatic env var sync left these two empty when first connected (a known quirk, especially with Supabase's newer publishable/secret key naming) — they were populated manually from the Supabase dashboard's Project Settings → API page rather than relying on the sync. If you ever reconnect or recreate the integration, verify these two aren't silently empty again (`vercel env ls` shows them, but not their values).
+
+### Staff dashboard
+
+`/staff/*` is gated by a single shared password (no per-staff accounts) — appropriate for a small team, but means there's no audit trail of who changed what.
+
+- **Gate:** `middleware.ts` checks for a `staff_session` cookie whose value matches a SHA-256 hash of `STAFF_PASSWORD` (computed via `lib/staffAuth.ts`, which deliberately avoids Node's `crypto` module — Web Crypto via `crypto.subtle` — because middleware runs on the Edge runtime). `lib/staffSession.ts` (`requireStaff`, `setStaffCookie`, `staffSignOut`) is the Node-side counterpart used inside Server Actions; every staff mutation action calls `requireStaff()` itself as defense-in-depth beyond the middleware redirect, since Server Actions can be invoked directly.
+- **Login:** `app/staff/login/`.
+- **CRUD:** `app/staff/profiles/` (list/create/delete + detail view) and `app/staff/sessions/` (create/edit/delete training sessions, attached to a profile via `TrainingSessionForm.tsx` shared between create and edit). `components/StaffSessionRow.tsx` is the editable row used on the profile detail page — kept separate from the member-facing read-only `TrainingSessionList.tsx` rather than overloading one component with conditional edit affordances.
+- **Env var:** `STAFF_PASSWORD` (server-only).
 
 ### Planned integrations (not yet implemented)
 

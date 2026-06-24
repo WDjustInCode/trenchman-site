@@ -1,6 +1,7 @@
 import Link from "next/link";
 import TiltImage from "@/components/TiltImage";
 import LightAltNav from "@/components/LightAltNav";
+import { getCurrentProfile } from "@/lib/session";
 
 const verticals = [
   {
@@ -50,12 +51,14 @@ const testimonials = [
   },
 ];
 
-export default function LightAlt() {
+export default async function LightAlt() {
+  const profile = await getCurrentProfile();
+
   return (
     <div className="bg-[#F4F1EC] min-h-screen text-deep-black">
       {/* Hero — full viewport, LightAltNav floats over it */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <LightAltNav />
+        <LightAltNav profile={profile} />
 
         {/* Subtle grid texture */}
         <div
