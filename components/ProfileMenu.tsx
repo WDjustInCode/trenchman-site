@@ -47,22 +47,13 @@ export default function ProfileMenu({ profile, theme, variant, onNavigate }: Pro
             </form>
           </>
         ) : (
-          <>
-            <Link
-              href="/sign-up"
-              onClick={onNavigate}
-              className={`font-bebas tracking-widest ${textClass} hover:text-gold transition-colors text-lg`}
-            >
-              Sign Up
-            </Link>
-            <Link
-              href="/sign-in"
-              onClick={onNavigate}
-              className={`font-bebas tracking-widest ${textClass} hover:text-gold transition-colors text-lg`}
-            >
-              Sign In
-            </Link>
-          </>
+          <Link
+            href="/sign-in"
+            onClick={onNavigate}
+            className={`font-bebas tracking-widest ${textClass} hover:text-gold transition-colors text-lg`}
+          >
+            Sign In
+          </Link>
         )}
       </div>
     );
@@ -76,12 +67,6 @@ export default function ProfileMenu({ profile, theme, variant, onNavigate }: Pro
           className={`font-bebas tracking-widest ${textClass} hover:text-gold transition-colors text-sm`}
         >
           Sign In
-        </Link>
-        <Link
-          href="/sign-up"
-          className={`font-bebas tracking-widest ${textClass} hover:text-gold transition-colors text-sm`}
-        >
-          Sign Up
         </Link>
       </div>
     );

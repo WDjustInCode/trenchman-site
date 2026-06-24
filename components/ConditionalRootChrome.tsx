@@ -8,9 +8,8 @@ import type { NavProfile } from "@/components/ProfileMenu";
 export function ConditionalNav({ profile }: { profile: NavProfile | null }) {
   const pathname = usePathname();
   if (pathname === "/light" || pathname === "/light-alt") return null;
-  if (pathname === "/" || pathname === "/academy" || pathname === "/contact")
-    return <AltNav profile={profile} />;
-  return <Nav profile={profile} />;
+  if (pathname === "/home-alt") return <Nav profile={profile} />;
+  return <AltNav profile={profile} />;
 }
 
 export function ConditionalFooter({ children }: { children: React.ReactNode }) {
