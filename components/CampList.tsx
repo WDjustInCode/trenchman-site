@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AddToCartButton from "@/components/AddToCartButton";
 
 export type Camp = {
   location: string;
@@ -6,9 +7,10 @@ export type Camp = {
   ageGroup?: string | null;
   spots: string | null;
   price: string;
+  variantId: string | null;
 };
 
-export default function CampList({ camps, registerHref }: { camps: Camp[]; registerHref: string }) {
+export default function CampList({ camps }: { camps: Camp[] }) {
   if (camps.length === 0) {
     return (
       <p className="text-athletic-white/40 text-sm text-center py-8">
@@ -35,12 +37,27 @@ export default function CampList({ camps, registerHref }: { camps: Camp[]; regis
             {camp.spots !== null && (
               <span className="font-bebas text-athletic-white/60 tracking-widest">{camp.spots} spots left</span>
             )}
-            <Link
-              href={registerHref}
-              className="font-bebas font-bold bg-gold text-deep-black px-5 py-2 rounded hover:bg-gold/80 transition-colors uppercase text-sm tracking-wider"
-            >
-              Register
-            </Link>
+            {camp.spots === "0" ? (
+              <button
+                disabled
+                className="font-bebas font-bold bg-iron-grey/40 text-athletic-white/50 px-5 py-2 rounded uppercase text-sm tracking-wider cursor-not-allowed"
+              >
+                Sold Out
+              </button>
+            ) : camp.variantId ? (
+              <AddToCartButton
+                variantId={camp.variantId}
+                label="Register"
+                className="font-bebas font-bold bg-gold text-deep-black px-5 py-2 rounded hover:bg-gold/80 transition-colors uppercase text-sm tracking-wider"
+              />
+            ) : (
+              <Link
+                href="/contact"
+                className="font-bebas font-bold bg-gold text-deep-black px-5 py-2 rounded hover:bg-gold/80 transition-colors uppercase text-sm tracking-wider"
+              >
+                Register
+              </Link>
+            )}
           </div>
         </div>
       ))}
