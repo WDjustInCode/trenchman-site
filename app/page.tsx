@@ -11,6 +11,9 @@ export const dynamic = "force-dynamic";
 export default async function Home() {
     const ticketProducts = await getCollectionProducts("camp-tickets");
 
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
     const camps: Camp[] = ticketProducts
         .map((p) => ({
         location: p.metafields?.find((m) => m?.key === "location")?.value ?? "",
@@ -18,8 +21,9 @@ export default async function Home() {
         ageGroup: p.metafields?.find((m) => m?.key === "age_group")?.value ?? null,
         spots: p.metafields?.find((m) => m?.key === "spots_available")?.value ?? null,
         price: `$${parseFloat(p.priceRange.minVariantPrice.amount).toFixed(0)}`,
+        variantId: p.variants.nodes[0]?.id ?? null,
         }))
-        .filter((c) => c.date)
+        .filter((c) => c.date && new Date(c.date) >= today)
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
         .slice(0, 3);
 
@@ -167,7 +171,7 @@ export default async function Home() {
                     <span className="max-w-[210px] sm:max-w-none">Become a Trenchman</span>
                     <span aria-hidden="true" className="flex-shrink-0">★</span>
                 </h2>
-                <CampList camps={camps} registerHref="/academy#register" />
+                <CampList camps={camps} />
                 <div className="mt-6 text-center">
                     <Link
                     href="/academy"

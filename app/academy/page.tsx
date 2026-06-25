@@ -56,6 +56,9 @@ export default async function AcademyPage() {
   const ticketProducts = await getCollectionProducts("camp-tickets");
 
   // Build camp schedule rows from metafields, sorted by date
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   const camps: Camp[] = ticketProducts
     .map((p) => ({
       location: getMeta(p, "location") ?? "",
@@ -63,8 +66,9 @@ export default async function AcademyPage() {
       ageGroup: getMeta(p, "age_group") ?? null,
       spots: getMeta(p, "spots_available"),
       price: `$${parseFloat(p.priceRange.minVariantPrice.amount).toFixed(0)}`,
+      variantId: p.variants.nodes[0]?.id ?? null,
     }))
-    .filter((c) => c.date)
+    .filter((c) => c.date && new Date(c.date) >= today)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
   return (
@@ -123,7 +127,7 @@ export default async function AcademyPage() {
         >
           2026 Camp Schedule
         </h2>
-        <CampList camps={camps} registerHref="/contact" />
+        <CampList camps={camps} />
       </section>
 
       {/* Solo & Group Training */}
