@@ -42,7 +42,7 @@ Each route corresponds to one of the three business verticals:
 | Route | Vertical | Key conversion goal |
 |-------|----------|-------------------|
 | `/` | All three | Awareness → split traffic to the right vertical |
-| `/academy` | Training camps | Register for a camp (Stripe / RegFox embed — not yet wired) |
+| `/academy` | Training camps | Register for a camp (Shopify `camp-tickets` collection) |
 | `/store` | Merch & gear | Add to cart (Shopify — wired via Storefront API) |
 | `/recruiting` | Recruiting exposure | Add $75 highlight reel upsell at checkout |
 | `/about` | Brand story | Trust-building; no direct conversion CTA |
@@ -74,9 +74,24 @@ All four navs share the same Home dropdown (`homeLinks` array) and main `links` 
 
 Each nav also renders `components/ProfileMenu.tsx` (desktop + mobile variants) for athlete sign-in state — see "Athlete profile system" below. Unlike `links`/`homeLinks`, this is **not** duplicated per-nav: all 4 navs import the same component and pass it a `profile` prop and a `theme` ("dark" | "light"), because the profile menu needs live per-request session data (not just a static link array), so quadruplicating it would risk drifting cookie/session logic across files.
 
+**Hidden routes** (exist but are not in the main `links` array):
+
+| Route | Purpose | Entry point |
+|-------|---------|-------------|
+| `/home-alt` | Dark alt home variant | Home dropdown |
+| `/light` | Light home variant | Home dropdown |
+| `/light-alt` | Light alt home variant | Home dropdown |
+| `/recruiting` | Recruiting vertical | No nav link yet |
+| `/sign-up` | Athlete registration | ProfileMenu (signed-out state) |
+| `/sign-in` | Athlete login | ProfileMenu (signed-out state) |
+| `/profile` | Athlete session history | ProfileMenu (signed-in state) |
+| `/staff/login` | Staff gate | Direct URL only |
+| `/staff/profiles` | Staff profile management | Staff nav (post-login) |
+| `/staff/sessions` | Staff training session CRUD | Staff nav (post-login) |
+
 ### Shared layout
 
-`app/layout.tsx` renders `ConditionalNav` and `ConditionalFooter` (both from `components/ConditionalRootChrome.tsx`), which suppress the root chrome on pages that manage their own nav/footer. The footer email form is currently unconnected — it needs a Klaviyo/Mailchimp POST endpoint added as a Server Action or API route.
+`app/layout.tsx` renders `ConditionalNav` and `ConditionalFooter` (both from `components/ConditionalRootChrome.tsx`), which suppress the root chrome on pages that manage their own nav/footer. The footer email form is currently unconnected.
 
 The footer uses a two-column layout: `trenchman-logo.svg` (461×481px) on the left, stacked content (tagline, email form, social links) bottom-aligned to its right. On mobile everything stacks vertically.
 
@@ -140,7 +155,7 @@ The `/academy` page displays three training options with tiered pricing:
 | Option | Price | Details |
 |--------|-------|---------|
 | Camp Registration | $75 | Product-driven via Shopify `camp-tickets` collection |
-| Solo Training | $75 | 1-hour 1-on-1 session; premium per-person rate |
+| Solo Training | $100 | 1-hour 1-on-1 session; premium per-person rate |
 | Group Training | $200 | Up to 6 athletes, 4-hour session; ~$33.33/person/hour |
 
 Both solo and group training cards link to `/contact` (contact form). Pricing is hardcoded in `app/academy/page.tsx` and should be updated in the component data array if rates change.
@@ -165,8 +180,3 @@ Athletes can create a lightweight profile to track training progress across the 
 - **CRUD:** `app/staff/profiles/` (list/create/delete + detail view) and `app/staff/sessions/` (create/edit/delete training sessions, attached to a profile via `TrainingSessionForm.tsx` shared between create and edit). `components/StaffSessionRow.tsx` is the editable row used on the profile detail page — kept separate from the member-facing read-only `TrainingSessionList.tsx` rather than overloading one component with conditional edit affordances.
 - **Env var:** `STAFF_PASSWORD` (server-only).
 
-### Planned integrations (not yet implemented)
-
-- **Camp registration:** RegFox or Jack Athletic embed on `/academy#register` (currently uses Shopify `camp-tickets` collection as a placeholder)
-- **Email:** Klaviyo — forms on Home, footer, and `/store` waitlist need Server Actions wired to Klaviyo's API (the `/contact` form uses Resend instead, see above)
-- **CMS:** Sanity or Notion-as-CMS for the camp schedule (currently hardcoded arrays in each page file)
