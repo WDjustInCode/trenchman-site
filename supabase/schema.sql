@@ -42,3 +42,12 @@ create table if not exists training_sessions (
 
 create index if not exists idx_training_sessions_profile
   on training_sessions (profile_id, session_date desc);
+
+-- Staff login rate limiting: tracks failed attempts per IP address.
+-- Rows older than 15 minutes are ignored; a successful login clears the IP's row.
+create table if not exists login_attempts (
+  ip_address text primary key,
+  attempt_count integer not null default 1,
+  window_start timestamptz not null default now()
+);
+
