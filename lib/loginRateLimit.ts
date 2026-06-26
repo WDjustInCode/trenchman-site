@@ -10,14 +10,14 @@ const client = createClient(
 const MAX_ATTEMPTS = 5;
 const WINDOW_MINUTES = 15;
 
-function getClientIp(): string {
-  const headersList = headers();
+async function getClientIp(): Promise<string> {
+  const headersList = await headers();
   const forwarded = headersList.get("x-forwarded-for");
   return (forwarded ? forwarded.split(",")[0] : "unknown").trim();
 }
 
 export async function checkRateLimit(): Promise<{ blocked: boolean; minutesLeft?: number }> {
-  const ip = getClientIp();
+  const ip = await getClientIp();
   const windowCutoff = new Date(Date.now() - WINDOW_MINUTES * 60 * 1000).toISOString();
 
   const { data } = await client
@@ -44,7 +44,7 @@ export async function checkRateLimit(): Promise<{ blocked: boolean; minutesLeft?
 }
 
 export async function recordFailedAttempt(): Promise<void> {
-  const ip = getClientIp();
+  const ip = await getClientIp();
   const windowCutoff = new Date(Date.now() - WINDOW_MINUTES * 60 * 1000).toISOString();
 
   const { data } = await client
@@ -67,6 +67,6 @@ export async function recordFailedAttempt(): Promise<void> {
 }
 
 export async function clearAttempts(): Promise<void> {
-  const ip = getClientIp();
+  const ip = await getClientIp();
   await client.from("login_attempts").delete().eq("ip_address", ip);
 }
